@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduce BEM structure</title>
+  </head>
+  <body>
+    <!-- BEM - Block Element Modifier -->
+    <!-- 
+    Ex:
+        Laptop: "Block"
+        Keyboard, mouse, screen, touchpad: "Element"
+        Laptop big, laptop small: "Modifier for block"
+        Small keyboard, small screen, black screen: "Modifier for Element"
+
+        Structure:
+        Block__Element--modifier
+        Block--modifier
+        Block__Element
+
+        Apply into EX:
+            laptop__keyboard, laptop__touchpad
+            laptop--big, laptop--small
+            laptop__keyboard--small, laptop__screen--scale
+
+     -->
+    <!-- 
+        Code rõ ràng
+        Người khác nhìn vào dễ hiểu
+     -->
+    <!-- Nhưng đi làm thì tùy vào team đang sd cú pháp 
+        nào thì chúng ta sẽ tuân theo cú pháp đó 
+        Và không chỉ có BEM mà còn nhiều kiểu cách code khác nhau
+        Và điều quan trọng là nhìn vào tên phải dễ hiểu
+        ví dụ: laptop__touchpad -> laptop-touchpad (nhanh hơn)
+     -->
+    <!-- Nếu Block quá dài, có 2 từ trở lên thì ta có thể sd '-'
+        ex: flash-message
+     -->
+
+
+     <!-- Ex1: https://collectui.com/designers/KaylaSawtelle/flash-messages
+    Block:
+        flash-message
+    Element:
+        image, title, description(desc), button
+    Modifier:
+        primary, secondary
+
+    Result
+        Block 1 & 2:
+            flash-message
+            flash-message__image, flash-message__title,....
+        
+        Block 1:
+            flash-message__image--primary, flash-message__button--primary
+        Block 2:
+            flash-message__image--secondary, flash-message__button--secondary
+    -->
+
+    <!-- In code: -->
+    <!-- button in block 1 -->
+    <button class="flash-message__button flash-message__button--primary">Continue</button>
+    <!-- button in block 2 -->
+    <button class="flash-message__button flash-message__button--secondary">Try Again</button>
+
+  </body>
+</html>
