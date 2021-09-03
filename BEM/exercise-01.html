@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise chapter 01</title>
+  </head>
+  <body>
+    <!-- 
+        1. Liệt kê 10 thẻ inline, 10 thẻ block, các thẻ semantic HTML5
+            inline: img, span, strong, em, code, a, input, sub, sup, label, area, button
+            block: div, p, table, ul, ol, h1->h6, iframe, caption, figure
+            semantic: header, main, footer, session, article, nav
+
+            'picture' không phải thẻ inline và block, kích thước dựa vào element trong nó
+        2. Làm 1 ví dụ về BEM cho block có tên là 'boy'
+            Block: boy
+            Element: head, body, root, arm, hair, eyes,...
+            Modifier: black, small, big, white, long
+
+            Result:
+            boy__head--small, boy__hair--long, boy__hair--black,...
+            boy--tall, boy--fat
+            boy__arm, boy__head
+
+        3. Hãy làm 1 ví dụ về sự kết hợp giữa thẻ inline và block
+        4. Áp dụng kiến thức về BEM đặt tên cho VD: https://collectui.com/designers/maxjosino/dropdown
+            Block: dropdown
+            Element: choosed, value
+            Modifier: title, icon
+
+            Result:
+            dropdown__choosed--title,dropdown__value--title
+            dropdown--title, dropdown--icon
+            dropdown__choosed, dropdown__value
+     -->
+
+    <!-- 3 -->
+    <!-- ul is block, a is inline -->
+    <!-- a tag cannot change padding-top, padding-buttom -->
+    <div class="navigation">
+        <img src="" alt="LOGO" class="nav__logo">
+        <ul class="nav__menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </div>
+
+    <!-- 4 -->
+    <div class="dropdown">
+        <div class="dropdown__select">
+            <span class="dropdown__selected"></span>
+            <i class="dropdown__caret"></i>
+        </div>
+        <div class="dropdown__list">
+            <div class="dropdown__item">
+                <span class="dropdown__title"></span>
+                <i class="icon-account dropdown__icon"></i>
+            </div>
+            <div class="dropdown__item">
+                <span class="dropdown__title"></span>
+                <i class="icon-lock dropdown__icon"></i>
+            </div>
+        </div>
+    </div>
+    <!-- 
+    Step chia layout
+        1. sử dụng 1 div chung cho toàn khối, lấy tên block đặt cho class tại đây
+        2. chia thành từng khối riêng biệt "con" với mỗi div khác nhau
+            , mỗi div con này là từng phần block__element
+        3. từng khối con thêm các thành phần cần thiết
+            , ở đây cũng là block__element
+    Notes: + Modifier là thuộc tính thêm cho block, nên là thuộc tính đi kèm với
+            1 block name chính
+    -->
+  </body>
+</html>
