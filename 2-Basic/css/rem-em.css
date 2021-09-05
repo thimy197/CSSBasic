@@ -1,0 +1,35 @@
+
+/* font-size: 100% = 16px */
+/* 1em = 1 rem = 16 px */
+html{
+    font-size: 62.5%;
+}
+
+.rem{
+    width: 10rem;
+    height: 25vh;
+    background-color: blue;
+    font-size: 32px;
+    /* em phụ thuộc vào font-size của thẻ html, 
+    default font-size của html là 100% */
+}
+
+.em{
+    width: 10em;
+    height: 25vh;
+    background-color: aqua;
+    font-size: 32px;
+    /* rem phụ thuộc vào font-size của chính thẻ đó hoặc 
+    elements chứa nó */
+}
+
+/* trong thực tế thì ngta thưởng sử dụng phần tử rem
+vì chỉ cần thay đổi font-size của thẻ html để thay đổi kích thước cần thiết */
+
+/* 
+vd:quy đổi về 1 rem = 10px
+1 rem= 100% = 16px
+        ?% = 10px
+        62.5%
+    -> 10rem = 100px
+ */
