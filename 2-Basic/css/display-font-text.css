@@ -1,0 +1,85 @@
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px */
+}
+
+/* I. font property */
+/* Để apply font:
+        1. truy cập vào gg fonts và chọn font muốn apply, hoặc tải font về máy
+        2. Gán link font vào <head>
+        3. Sử dụng fonts
+            vd: apply cho toàn bộ trang web, ta apply vào thẻ body như bên dưới đây */
+body {
+  /* sans-serif: là chữ không có chân
+        serif: là chữ có chân */
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  /* độ đậm nhạt của chữ, default là 400 */
+  font-weight: 200;
+  /* in nghiêng */
+  font-style: italic;
+  /* đổi loại fonts */
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* II. display property */
+a {
+  color: white;
+  /* link không có underline phía dưới */
+  text-decoration: none;
+
+  width: 10rem;
+  height: 10rem;
+  padding: 1rem;
+  /* 
+        'a' là thẻ inline, nên giới hạn về margin(top, bottom), width, height -> sd thẻ display
+    */
+  background-color: yellow;
+  display: inline-block;
+  display: block;
+  /* ẩn khỏi trang web lun, ko chiếm diện tích */
+  display: none;
+}
+
+/* style cho đoạn text */
+.text {
+  /* khoảng cách giữa các dòng */
+  line-height: 1.5;
+
+  /* canh lề, default: left 
+        justify: canh đều 2 bên lề*/
+  text-align: right;
+  text-align: center;
+  text-align: justify;
+  text-align: left;
+
+  /* khoảng cách giữa các chữ cái, default: 0 */
+  letter-spacing: 2px;
+
+  /* khoảng cách giữa các từ */
+  word-spacing: 5px;
+
+  /* làm cho đoạn văn nằm trên 1 dòng */
+  white-space: nowrap;
+  /* nếu đoạn văn trên 1 dòng quá dài -> bể giao diện
+        -> nếu dài thì để "..." ở cuối (ẩn nội dung+"...")*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* đoạn văn hiển thị <= 3 dòng, nếu dài hơn thì để "..." */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* số dòng hiển thị */
+  /* nếu dài hơn 3 dòng thì ẩn và thêm "..." */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Đây là đoạn văn toàn chữ a dính liền
+    -> KH yêu cầu nếu là thế này thì vẫn để nó rớt xuống hàng(vì là 1 chữ mà)
+    cách sử dụng 'nowrap' như trên chỉ áp dụng ngắt từ  */
+.text-a {
+  /* break-all: nếu tới từ đó mà dài quá thì cắt lun từ đó xuống hàng dưới */
+  word-break: break-all;
+  /* break-word: nếu tới từ đó mà dài quá thì từ đóng tự động nhảy xuống dòng dưới -> cho có nghĩa */
+  word-break: break-word;
+}
