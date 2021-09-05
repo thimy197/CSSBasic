@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Border Property</title>
+  </head>
+  <body>
+    <style>
+      /* backgroud property */
+      body {
+        /* khi làm việc với background thì phải thiết lập width/height */
+        background-image: url(https://images.unsplash.com/photo-1585435465945-bef5a93f8849?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80);
+        width: 100%;
+        height: 100px;
+
+        background-position: center;
+        /* background phủ toàn bộ nền, scale hình */
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* fixed background */
+        background-attachment: fixed;
+
+        /* viết tắt */
+        /* background: red
+          url(https://images.unsplash.com/photo-1585435465945-bef5a93f8849?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80)
+          no-repeat center center/cover fixed; */
+      }
+
+      /* border property */
+      .background {
+        margin-top: 10px;
+        width: 100px;
+        height: 100px;
+
+        /* border: border-width border-style border-color */
+        border: 10px solid black;
+        /* bo 4 góc */
+        border-radius: 20px;
+        /* bo 4 góc theo kim đồng hồ từ góc trên bên trái sang */
+        border-radius: 10px 20px 30px 40px;
+        /* set từ góc bo đơn */
+        border-top-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+
+        /* bo tròn */
+        border-radius: 50%;
+
+        /* chú ý về outline, nó có vẻ giống với border nhưng không có thuộc tính radius như border */
+        outline: 1px solid green;
+      }
+    </style>
+    <div class="background"></div>
+  </body>
+</html>

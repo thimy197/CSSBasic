@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box-sizing</title>
+  </head>
+  <body>
+    <style>
+      /* 1rem=100%=16px
+        62.5%=10px */
+      html {
+        font-size: 62.5%;
+        /* 1rem = 10px */
+      }
+
+      .boxed {
+        width: 10rem;
+        height: 10rem;
+        background-color: blue;
+        border: 5px solid black;
+        padding: 1rem;
+        box-sizing: content-box;
+        /* 
+        box-sizing: content-box; ->default 
+        width = width + paddingleft + paddingright + borderleft + borderright
+                = 10rem + 1rem + 1rem + 5px + 5px = 130px
+        heigt = height + paddingtop + paddingbottom + borderbottom + borderbottom
+
+        -> width chúng ta set chỉ có 10rem=100px nhưng trên giao diện lại chiếm tới 130px
+        -> có sự chênh lệch -> sai với thiết kế
+
+        Khắc phục:
+            box-sizing: border-box;
+            -> border-box làm cho element hiểu là (padding + border) nằm trong width thực tế lun
+            lúc này:
+                width = width - paddingleft - paddingright - borderleft - borderright
+                    = 100rem - 1rem - 1rem - 5px - 5px = 70px -> độ rộng của content bên trong
+
+        Nếu tránh quên trong quá trình code thì chúng ta sẽ set cho tất cả các selector biết điều này bằng cách:
+            *{
+                box-sizing: border-box;
+            }
+            '*' bao gồm tất cả selector(elements, IDs, classes)
+        */
+        box-sizing: border-box;
+      }
+    </style>
+    <div class="boxed"></div>
+  </body>
+</html>
