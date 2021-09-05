@@ -1,0 +1,47 @@
+/* 1. Tạo 1 khối có class là 'box'
+        rộng và cao: 200x300
+        màu nền: #ffa400
+        chữ bất kỳ màu đen
+        border màu vàng
+        padding 10px;
+        margin 15px
+        bo góc 4px
+        chữ canh giữa */
+.box{
+    width: 200px;
+    height: 300px;
+    background-color: #ffa400;
+    border: 3px solid yellow;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* 2. Tạo khối có đoạn văn rất dài, 
+có độ rộng tối đa là 500px
+hiển thị tối đa 3 dòng, vượt quá thì hiển thị "..." */
+.long-3-line{
+    max-width: 500px;
+    /* height: 50px; */
+
+    /* giới hạn số dòng theo chiều dọc */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* xác định nếu vượt thì ẩn nội dung vượt và hiển thị "..." */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 3. Tạo khối có đoạn văn rất dài, 
+            có độ rộng tối đa là 100px, 
+            hiển thị trên 1 dòng, vượt quá thì hiển thị "...". */
+.long-1-line{
+    max-width: 100px;
+
+    white-space: nowrap;
+    /* tràn = ẩn + "..." */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
