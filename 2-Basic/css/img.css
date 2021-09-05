@@ -1,0 +1,39 @@
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px */
+}
+
+/* img */
+.image {
+  /* xử lý hình quá bự tràn cả màn hình 
+        100% rộng bằng cha chứa nó(hiện tại đang chỉ thẻ body) */
+  /* max-width: 100%; */
+
+  width: 20rem;
+  height: 20rem;
+  /* hình bị méo, bể hình
+        cover: hình sẽ lấy theo tỉ lệ(scale), và sẽ cắt bớt nếu bị tràn */
+  object-fit: cover;
+  /* do cover sẽ cắt bớt hình và lấy vị trí trung tâm
+        hình hiện tại đang bị cắt 2 bên, giờ muốn lấy bên trái và cắt bớt bên phải */
+  object-position: left;
+
+  /* đưa hình ra giữa
+        do img là thẻ inline -> đưa nó về block thì mới margin vô giữa đc
+        Set display về inline-block cũng sẽ không hiệu quả */
+  margin: 0 auto;
+  display: block;
+}
+/* đưa thẻ block ra giữa:
+        margin: 0 auto;
+    đưa thẻ inline ra giữa: 
+        1. wrap thẻ inline bằng div
+        2. lấy div chứa thẻ inline set thêm text-aline property  */
+.image1 {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+}
+.wrap-inline {
+  text-align: center;
+}

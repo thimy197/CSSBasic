@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Margin and padding</title>
+  </head>
+  <body>
+    <style>
+      .background {
+        height: 100px;
+        height: 100px;
+        background-color: aquamarine;
+      }
+      /* margin property, outer spacing */
+      .background {
+        /* 1. gán gtri */
+        /* margin: trên phải dưới trái; */
+        margin: 10px 20px 30px 40px;
+        /* margin từ mặt */
+        margin-top: 15px;
+        margin-right: 15px;
+        /* 1 gtri -> top=right=bottom=left */
+        margin: 10px;
+        /* 2 gtri -> (top=bottom) (right=left) */
+        margin: 20px 40px;
+        /* 3 gtri -> top (right=left) bottom*/
+        margin: 10px 20px 30px;
+
+        /* 2. margin có căn chỉnh vị trí */
+        /* left=right=auto -> center */
+        margin-left: auto; /* qua trái */
+        margin-right: auto; /* qua phải */
+        /* NOTE: chỉ áp dụng đc với thẻ block, thẻ inline ko đc */
+
+        /* 3. margin collapse */
+        /* nếu element ở trên có margin bottom
+                element dưới có margin top
+        => lấy giá trị lớn hơn\
+        không áp dụng hàng ngang */
+
+        /* 4. margin thì có thể sử dụng số âm(-)
+            nhưng padding thì KO thể sd số âm */
+      }
+      .background2 {
+        /* margin-top ở đây là 100px, 
+            margin-bottom của .background là 30px 
+            -> khoảng cách ở giữa 2 block này chỉ là 100px thồi */
+        margin: 100px;
+      }
+
+      /* padding property, inner spacing */
+      .padding1 {
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        margin: 0 auto;
+        /* xử lý tràn nội dung */
+        overflow: hidden;
+
+        /* padding khoảng cách giữa nội dung và border */
+        padding: 10x;
+        /* padding không thể sd số âm(-) */
+      }
+    </style>
+
+    <div class="padding1">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis, neque
+      hic soluta obcaecati expedita ex a voluptates minus dolorum amet
+      recusandae qui reprehenderit voluptatem quam voluptatum corrupti? Tenetur,
+      veritatis sint.
+    </div>
+
+    <div class="background"></div>
+    <div class="background background2"></div>
+  </body>
+</html>
