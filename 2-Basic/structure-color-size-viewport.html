@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Css Structure</title>
+
+    <!-- Add custom css file -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <style>
+      /* 
+        1. Structure:
+            selector{
+                property: value;
+            }
+
+        3. Explain:
+            Selectors:
+                Tags: p, div, h1, main 
+                Class: .demo
+                ID: #header
+
+            Property: color, background-color, size
+            Value: red, orange, 10p
+      */
+
+      /* Color Property */
+      p {
+        /* color: value; */
+        /* 
+          named: red, blue, green, black ...
+          hexa: #ffa400, #a0aefd,
+                  #666666 -> #666
+                  #7cd7cd -> #7cd
+          rgb: rgb(0,0,0), rgb(255,255,255)
+          rgba: rgba(0,0,0, 0.5)
+              'a' is alpha: opacity 0->1
+        */
+        color: red;
+        color: #faff12;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      /* size property */
+      .size-property {
+        background-color: #00aed0;
+
+        /* w50 */
+        width: 100px;
+        /* h50 */
+        /* height: 50px; */
+
+        /* min-xxx, max-xxx: giới hạn độ rộng của elements(height/width) */
+        max-height: 50px;
+        max-width: 200px;
+
+        /* overflow: xử lý content bị tràn
+          overflow-x: xử lý nếu tràn theo chiều ngang 
+          overflow-y: xử lý nếu tràn theo chiều dọc */
+        /* overflow: hidden; */
+        overflow-x: hidden; /* hidden: ẩn nội dung bị tràn */
+        overflow-y: auto; /* auto: xuất hiện scoll theo c.dọc*/
+      }
+
+      /* các đơn vị hay dùng */
+      .background {
+        background-color: #faff12;
+        /* viewport width : vw, viewport height: vh 
+                width 1% = 10vw 
+            vậy viewport khác với % như thế nào?
+                Thì % sẽ tính dựa theo thèn cha của element đó
+                còn viewport thì lấy kích thước theo màn hình
+            px là đơn vị cố định
+        */
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
+      necessitatibus aspernatur nesciunt esse aliquid, in nam commodi accusamus
+      corrupti eos amet ducimus, nemo temporibus, ipsam doloremque molestiae eum
+      quia sint.
+    </p>
+
+    <div class="size-property">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum maxime
+        rerum, aliquam ex et, aspernatur assumenda labore minus est eveniet
+        consectetur ratione velit eum nulla maiores molestiae, id corporis
+        asperiores!
+      </p>
+    </div>
+
+    <div class="background"></div>
+  </body>
+</html>
