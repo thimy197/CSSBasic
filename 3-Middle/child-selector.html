@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Selector</title>
+</head>
+<body>
+    <style>
+        li{
+            font-size: 3rem;
+            list-style: none;
+            font-weight: bold;
+        }
+        /* child đầu tiên */
+        li:first-child{
+            color: red;
+        }
+        /* child cuối cùng */
+        li:last-child{
+            color: blue;
+        }
+        /* lấy theo child theo vị trí truyền vào, tính từ trên xuống */
+        li:nth-child(3){
+            color: grey;
+        }
+        /* TH list động và mình muốn lấy child kế cuối */
+        li:nth-last-child(2){
+            /* tính từ cuối lên, lấy cái thứ 2 */
+            color: orange;
+        }
+        /* lấy tất cả child "trừ cái đầu tiên" */
+        li:not(:first-child){
+            background-color: wheat;
+        }
+        /* lấy tất cả child "trừ cái cuối cùng" */
+        li:not(:last-child){
+            font-style: italic;
+        }
+        /* lấy hàng lẻ */
+        li:nth-child(odd){
+            text-align: center;
+        }
+        /* lấy hàng chẵn */
+        li:nth-child(even){
+            text-align: right;
+        }
+
+        /* chạy theo n, n tăng dần từ 0 */
+        li:nth-child(2n+1){
+            /* 
+                n=0 -> 1
+                n=1 -> 3
+                n=2 -> 5
+                n=3 -> 7 -> không có dòng này
+            */
+            list-style: disc;
+        }
+    </style>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+    </ul>
+</body>
+</html>

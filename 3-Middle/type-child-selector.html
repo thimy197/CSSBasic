@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Type Child Selector</title>
+  </head>
+  <body>
+    <style>
+      /* 
+        Dưới đây là sự khác nhau giữa :xxx-child vs :xxx-of-type khi cần lấy child bất kỳ trong list child:
+            -Nếu đề cập đến các child có cùng loại, vd: toàn li trong ul
+            Kkhi đó ta sẽ sử dụng :first-child :last-child :nth-child() :nth-last-child() để lấy child đúng vị trí
+            
+            -Nhưng lúc này các child không còn cùng loại nữa, vd: 1p + 5li trong ul
+            Thì lúc này li:first-child sẽ không chính xác
+        */
+
+      /* li không phải là child đầu tiên nữa -> sẽ không hiển thị đc color */
+      li:first-child {
+        color: aqua;
+      }
+      /* Nếu muốn lấy li mà phân biệt theo type thì t sử dụng :first-of-type */
+      li:first-of-type {
+        color: aqua;
+      }
+      /* lấy li thứ 2 tính từ dưới lên */
+      li:nth-last-of-type(2) {
+        color: aqua;
+      }
+      /* Cần tô màu cho span ở thẻ li cuối cùng */
+      li:last-of-type span{
+          color: tomato;
+      }
+      /* cần tô màu cho tất cả thẻ p, trừ p đầu tiên */
+      p:not(:first-child){
+        color: chartreuse;
+      }
+      /* nên sử dụng cách này, nếu p không phải là first-child */
+      p:not(:first-of-type){
+        color: teal;
+      }
+    </style>
+    <ul>
+      <p>This is first child</p>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <li>item</li>
+      <p>This is b tag and near-last child</p>
+      <li><span>child in last-child</span></li>
+      <p>This is b tag and near-last child</p>
+    </ul>
+  </body>
+</html>
