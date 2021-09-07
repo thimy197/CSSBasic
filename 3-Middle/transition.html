@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Property</title>
+</head>
+<body>
+    <style>
+        /* việc chuyển background-color diễn ra quá nhanh, muốn nó chậm lại ta làm sao */
+        .boxed{
+            width: 20rem;
+            height: 20rem;
+            background-color: turquoise;
+            /* Transition làm chậm khoảng tg của hành động trên 1 property
+                Transition: property timer(2s) easing*/
+            transition: background-color 1s linear;
+            /* delay 1 khoảng tg */
+            /* transition-delay: 1s; */
+            /* chậm 0.2s trên nhiều thuộc tính */
+            transition: background-color 0.2s linear, color 0.2s linear;
+            /* chậm 0.2s trên tất cả thuộc tính */
+            transition: all 0.2s linear;
+        }
+        .boxed:hover{
+            background-color:violet;
+            color: blue;
+            font-size: 2rem;
+        }
+
+        /* transition không thể áp dụng cho thẻ: display(vì thẻ này bị mất hoàn toàn)
+            vậy thì làm gì khi cần hiện element có display:none
+            --> sử dụng 1 thẻ cha bọc nó lại và tác động lên thẻ cha đó
+        */
+        .wrap{
+            width: 20rem;
+            height: 20rem;
+        }
+        .display-tag{
+            width: 20rem;
+            height: 20rem;
+            background-color: rgb(42, 30, 214);
+            
+            display: none;
+            transition: display 1s linear;
+        }
+        
+        /* tác động hover lên khu vực chứa thẻ con display và trỏ vào thẻ con để thay đổi thuộc tính display
+            nhưng cuối cùng vẫn là không thể sử dụng transition cho display đc */
+        .wrap:hover .display-tag{
+            display: inline-block;
+        }
+        /* ko sử dụng đc display thì sd opacity */
+        .opacity-tag{
+            width: 20rem;
+            height: 20rem;
+            background-color: rgb(214, 104, 30);
+            
+            opacity: 0;
+            transition: opacity 1s linear;
+        }
+        .opacity-tag:hover{
+            opacity: 1;
+        }
+
+        /* giải pháp thay thể cho display đó là opecity 
+            Còn về visibility: hidden; thì không bị tác động bởi tao tác nên cũng phải phụ thuộc vào cha nó như display*/
+        .visibility-tag{
+            width: 10rem;
+            height: 10rem;
+            background-color: rgb(214, 30, 76);
+            visibility: hidden;
+            /* không áp dung đc  */
+            transition: visibility 10s linear;
+        }
+        .wrap:hover .visibility-tag{
+            visibility: visible;
+        }
+    </style>
+    
+    <div class="wrap">
+        <div class="display-tag"></div>
+        <div class="opacity-tag"></div>
+        <div class="visibility-tag"></div>
+    </div>
+    <div class="boxed">abcddddd</div>
+</body>
+</html>
