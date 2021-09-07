@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise chapter 03</title>
+</head>
+<body>
+    <!-- 1. Tạo 6 button có gradient, có thể sd BEM: 'btn btn--green'
+            buttons đầu có 'box-shadow' tương ứng với màu gradient lun
+        link: https://assets.materialup.com/uploads/cc065902-1545-4f0f-adc3-b9344a4f0a56/preview.png
+     -->
+
+     <style>
+         /* 2. Tạo text gradient */
+         /* html{
+             background-color: black;
+         } */
+         .wrap-text{
+             background-color: white;
+             width: 50vw;
+             margin: 0 auto;
+         }
+         .text-gradient{
+             text-align: center;
+             font-size: 9rem;
+             font-weight: 800;
+             font-family: sans-serif;
+
+             /* set gradient cho chữ gồm 3 steps: */
+             /* 1. set background là gradient */
+             background-image: linear-gradient(to right bottom, #f8d370, #e41c97);
+             /* 2. làm color trong suốt  */
+             color: transparent;
+             /* 3. sử dụng background-clip để chuyển màu nền cho text */
+             -webkit-background-clip: text;
+             background-clip: text;
+
+             /* Ngoài ra: */
+             /* Upper text */
+             text-transform: uppercase;
+         }
+
+         /* 1. 6 buttons gradient */
+         .button{
+            display: inline-block;
+
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 10px;
+            color: white;
+
+            width: 176px;
+            margin: 20px 60px;
+            /* sd line-height, hoặc là padding */
+            line-height: 47px;
+            text-align: center;
+
+            border-radius: 12px;
+            text-transform: uppercase;
+            
+            /* chỉnh độ rộng giữa các letter */
+            letter-spacing: 2px;
+
+            /* transition khi hover vào button */
+            transition: background-color 0.25s linear;
+         }
+         .button--green{
+             background: linear-gradient(to right, #69ecac, #4fccc7);
+             box-shadow: -1px 7px 20px 0px #4fccc8d3;
+         }
+         .button--blue{
+            background: linear-gradient(to right, #ace4fe, #73b6ed);
+            box-shadow: -1px 7px 20px 0px #73b6edd8;
+         }
+         .button--purple{
+            background: linear-gradient(to right, #afbeff, #ad8bf1);
+            box-shadow: -1px 7px 20px 0px #ad8bf1dc;
+         }
+         .button--orange{
+            background: linear-gradient(to right, #ffd598, #fea565);
+            box-shadow: -1px 7px 20px 0px #fea565d7;
+         }
+         .button--red{
+            background: linear-gradient(to right, #fdc0ac, #ed7774);
+            box-shadow: -1px 7px 20px 0px #ed7674dc;
+         }
+         .button--pink{
+            background: linear-gradient(to right, #ffabb7, #f5859c);
+            box-shadow: -1px 7px 20px 0px #f5859bd8;
+         }
+
+         .button:hover{
+            color: black;
+            background: rgb(212, 171, 203);
+         }
+
+         /* 3. đổi màu khi hover vào bất kìa button nào, thêm transition để cho mượt */
+     </style>
+     <!-- 2. text gradient -->
+     <!-- <div class="wrap-text">
+         <p class="text-gradient">TEXT</p>
+     </div> -->
+
+     <!-- 1. 6 button gradient -->
+     <div class="button button--green">Success</div>
+     <div class="button button--blue">Information</div>
+     <div class="button button--purple">Buy Now</div>
+     <div class="button button--orange">Warning</div>
+     <div class="button button--red">Contact</div>
+     <div class="button button--pink">Delete</div>
+</body>
+</html>
