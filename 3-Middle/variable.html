@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variable in Css</title>
+  </head>
+  <body>
+    <style>
+      /* Hiện tại có 2 phần tử đang đổ bóng với color: #f97b7b
+            Giải sử trang web của bạn có nhiều chỗ đang đỏ bóng, 
+            vậy thì việc sửa lại color sẽ thực hiện owrw nhiều chỗ
+        -> ngta sẽ sử dụng biến để lưu giá trị color */
+        
+        /* đặt trong root giống như khai báo biến toàn cục, tất cả mọi nơi có thể sử dụng biến này */
+      :root {
+        /* Khai báo biến */
+        --shadow-color: #f97b7b;
+        /* Để sử dụng biến ta làm như sau:
+                var(--tên-biến) */
+      }
+
+      .title {
+        font-size: 30px;
+        font-weight: bold;
+
+        text-shadow: 2px 2px 1px var(--shadow-color);
+      }
+
+      .boxed {
+        width: 20rem;
+        height: 20rem;
+        background-color: purple;
+        margin: 5rem auto;
+
+        box-shadow: 5px 5px 5px 0 var(--shadow-color);
+      }
+      .sub-boxed-1 {
+          /* 
+            có thể ghi đè lại biến
+            biến đang khai báo ở trong selector là biến cục bộ,
+            biến cục bộ chỉ sử dụng trong phạm vi "chính selector" và "con bên trong" thẻ selector đó
+          */
+        --shadow-color: #a3f97b;
+        width: 10rem;
+        height: 10rem;
+        background-color: red;
+        box-shadow: 5px 5px 5px 0 var(--shadow-color);
+      }
+      .sub-boxed-2 {
+        width: 5rem;
+        height: 5rem;
+        background-color: rgb(0, 247, 255);
+        /* --shadow-color lấy từ cha của nó là "sub-boxed-1" */
+        box-shadow: 5px 5px 5px 0 var(--shadow-color);
+      }
+    </style>
+    <p class="title">Demo title</p>
+    <div class="boxed">
+      <div class="sub-boxed-1"><div class="sub-boxed-2"></div></div>
+    </div>
+  </body>
+</html>
