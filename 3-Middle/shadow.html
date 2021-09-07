@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shadow - Đổ bóng</title>
+  </head>
+  <body>
+    <style>
+      /* Nên đọc qua https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+        nếu sử dụng nhiều */
+
+      .boxed {
+        width: 20rem;
+        height: 20rem;
+        background-color: purple;
+        margin: 5rem auto;
+
+        /* box-shadow: x y blur scale color
+                x, y: đổ theo trục
+                blur: độ mờ của bóng
+                scale: tỉ lệ bao nhiêu
+                color: màu của bóng 
+            
+                box-shadow có thể đổ bóng bên ngoài(outset) và cả bên trong(inset)
+                bóng của box-shadow không chiếm diện tích
+                */
+        box-shadow: 5px 5px 5px 0 red;
+      }
+
+      .title {
+        font-size: 30px;
+        font-weight: bold;
+
+        /* text-shadow sẽ không có blur */
+        text-shadow: 2px 2px 1px #f97b7b;
+      }
+    </style>
+    <p class="title">Demo title</p>
+    <div class="boxed"></div>
+  </body>
+</html>
