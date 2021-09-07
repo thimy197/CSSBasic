@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Different: opacity vs visibility vs display</title>
+</head>
+<body>
+
+    <style>
+        .boxed{
+            /* opaciy để làm mờ, mờ tất cả gì chứa trong class này  */
+            opacity: 0.5;
+
+            /* vẫn chiếm diện tích, chỉ bị mờ đi, vẫn thao tác đc nếu như là 1 button */
+            opacity: 0;
+            /* vẫn chiếm diện tích, bị giấu đi, không thể tao tác dc */
+            visibility: hidden;
+            /* biến mất lun */
+            display: none;
+            /* opacity vs visibility thường ngta sẽ sử dụng làm transition hiệu ứng, nhấn vô hiện ra */
+        }
+    </style>
+    <div class="boxed">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis tempora, commodi laboriosam est dignissimos nemo animi porro debitis recusandae consectetur laborum, minus odit ratione omnis obcaecati explicabo molestias cum temporibus?
+    </div>
+</body>
+</html>
