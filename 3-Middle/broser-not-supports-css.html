@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Not Support CSS properties</title>
+  </head>
+  <body>
+    <style>
+      /* <!-- Vấn đề được đặt ra như sau:
+        Giả sử thuộc tính "-webkit-background-clip" không được hỗ trọ trên browser nào đó, 
+        nhưng KH vẫn yêu cầu nếu trình duyệt không support thì hiển thị chữ màu xanh da trời -->
+            
+        Lúc này chúng ta sẽ làm như sau:  */
+
+      p {
+        font-size: 15px;
+        font-weight: bold;
+
+        color: aqua;
+      }
+
+      /* Check hỗ trợ thì sử đụng  */
+      @supports (-webkit-background-clip: text) {
+        /* gradient cho chữ */
+        p {
+          /* đặt màu sẽ set cho chữ */
+          background-image: linear-gradient(to right, green, red);
+          /* làm chữ trong suốt */
+          color: transparent;
+          /* set backgroud cho text và xóa màu cho nền */
+          -webkit-background-clip: text;
+          background-clip: text;
+        }
+      }
+
+      /* có thể check not support */
+      @supports not (-webkit-background-clip: text) {
+        p {
+          color: aqua;
+        }
+      }
+
+      /* Bên trên là ví dụ thôi, thực tế thì nếu đa số hỗ trợ thì set default là chữ gradient, check "not @support" để set color màu khác */
+    </style>
+
+    <div class="boxed">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet a
+        ipsa, pariatur provident similique at, iste vero excepturi iusto eos
+        repellat esse necessitatibus magni odit accusantium nostrum? Amet,
+        totam.
+      </p>
+    </div>
+  </body>
+</html>
