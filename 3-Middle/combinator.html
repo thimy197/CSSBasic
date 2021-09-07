@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combinator basic</title>
+  </head>
+  <body>
+    <!-- Như trong file emmet-tip.html đã giới thiệu qua các combinator:
+        '>' chỉ phần tử con bên trong
+        '+' phần tử cùng cấp liền kề "ngay phía sau"
+        '^' chỉ cha
+
+        Có thêm 1 combinator cần chú ý nữa là 
+        '~' chỉ tất cả phần tử "cùng cấp" ko nhất thiết phải liền kề
+
+        Dấu '+' này thường xảy ra trong trường hợp:
+          có nhiều tag <p> có class="title-1" nhưng chỉ muốn thẻ <p> ở gần thẻ nav mới đổi màu
+          lúc này chúng ta không thể sử dụng: .title-1{} để làm, nếu đặt thêm class chỉ để đổi 1 thuộc tính đôi khi gây ra loãng
+          thay vào đó chúng ta sử dụng '+'
+            nav + .title-1{}
+        
+      -->
+
+    <style>
+      .title + .item1 {
+        color: blue;
+      }
+      
+      /* 
+        vì + chỉ liền kề đc thôi nên khi trỏ tới .item2 ở xa thì ko apply đc
+            .title + .item2 {
+              color: blue;
+            }
+        .first class cùng cấp, nằm phía trước cũng không có tác dụng
+            .title + .first{
+                color: blue;
+            }
+        Lúc này ta sẽ chuyển sang sài '~'
+       */
+      .title ~ .item2 {
+        color: red;
+      }
+
+      p ~ li {
+        color: green;
+      }
+      /* vì class có độ ưu tiên lớn hơn tag nên .item2 đang lấy từ ".title ~ .item2{}" */
+    </style>
+
+    <ul>
+        <p class="first">first element</p>
+      <p class="title">This is title</p>
+      <li class="item1">item</li>
+      <li class="item2">item</li>
+      <li>item</li>
+      <p>paragraph in between</p>
+      <li>item</li>
+      <li>item</li>
+    </ul>
+  </body>
+</html>
