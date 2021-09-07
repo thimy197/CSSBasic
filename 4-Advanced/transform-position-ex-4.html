@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar process - position</title>
+</head>
+<body>
+    <style>
+        .bar{
+            width: 300px;
+            background-color: rgb(226, 223, 219);
+            height: 10px;
+            border-radius: 5px;
+
+            /* đưa thanh bar ra trung tâm */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .bar-process{
+            width: 30%;
+
+            background-color: aqua;
+            height: 100%;
+            /* inherit kế thừa cha, cha đang 5px thì nó cũng 5px */
+            border-radius: inherit;
+
+            position: relative;
+        }
+        .bar-circle{
+            border-radius: 50%;
+            width: 10px;
+            height: 100%;
+            background-color: aqua;
+            /* làm chấm tròn to ra  */
+            box-shadow: 0 0 0 3px aqua;
+            
+            /* canh cho nó ở cuối process */
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+    <div class="bar">
+        <div class="bar-process"><div class="bar-circle"></div></div>
+    </div>
+</body>
+</html>

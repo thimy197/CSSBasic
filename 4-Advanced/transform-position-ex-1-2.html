@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practise with transform and position</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+  </head>
+  <style>
+    /* EX1: tạo modal bao phủ toàn trang web, như 1 banner quảng cáo/thông báo khi người dùng vào trang*/
+    body {
+      height: 2000px;
+    }
+    .modal {
+      background-color: rgb(19 19 19 / 50%);;
+
+      /* fixed để khi scroll trang thì model vẫn đứng im --> đúng với ý nghĩa của nó là bao phủ toàn trang */
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+      width: auto;
+
+      /* để nó nằm trên cùng */
+      z-index: 2;
+    }
+    /* 
+        .modal > .model__content: chỉ .model__content con trực tiếp của cha .model
+        .modal .model__content: chỉ tất cả các thẻ có .model__content trong pham vi của .model
+    */
+    .modal > .model__content {
+      /* do model này đang chiếm toàn screen, nên lấy theo viewport đc
+            width: 50vw;
+            height: 70vh;
+           Không thì lấy theo thèn cha là .model
+            width: 50%;
+            height: 70%;
+        */
+      width: 50%;
+      height: 70%;
+      background-color: aliceblue;
+      /* đưa content của modal ra trung tâm */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      /* 50% của transform là width của chính selector đó */
+      transform: translate(-50%, -50%);
+      
+    }
+
+    /* EX2: thêm icon play video trên content của model */
+    .video{
+        width: 80%;
+        height: 80%;
+        margin: 0 auto;
+        
+        /* do icon cần dùng position:absolute nên cần position ở cha nó */
+        position: relative;
+    }
+    .video__img{
+        width: 100%;
+        height: 100%;
+        /* scale hình theo tỉ lệ, cắt bớt để khỏi bể hình */
+        object-fit: cover;
+        /* chọn vị trí scale ở top */
+        object-position: top;
+
+        /* do z-index của img */
+    }
+    .video__icon{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 64px;
+        color: #524f4f;
+    }
+  </style>
+  <body>
+    <p class="title">This is main content</p>
+    <div class="modal">
+      <div class="model__content">
+          <div class="video">
+            <img
+            src="https://images.unsplash.com/photo-1515041219749-89347f83291a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80"
+            alt=""
+            class="video__img"
+            />
+            <i class="fas fa-play video__icon"></i>
+          </div>
+          <div class="caption" style="text-align:center;">This is caption</div>
+      </div>
+    </div>
+  </body>
+</html>
