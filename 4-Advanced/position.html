@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position property</title>
+  </head>
+  <body>
+    <style>
+      .boxed {
+        /* 
+            1. position: relative; 
+
+            thuộc tính position sẽ hơi giống với transform, di chuyển vật thể mà không ảnh hưởng đến elements khác
+            nhưng transform có thể scale() được còn position thì không
+        
+        */
+        width: 3rem;
+        height: 3rem;
+        background-color: red;
+
+        /* 4 properties: top, left, right, bottom này đi kèm với position, nếu không có postion thì top, left,... ko hoạt động
+            top vs bottom cùng nhau thì ưu tiên lấy top
+            left vs right cùng nhau thì ưu tiên lấy left
+
+            trường hợp này element di chuyển sẽ giống như sài thuộc tính transform: translate()
+        */
+        position: relative;
+        top: 20px;
+        left: 20px;
+      }
+      /* -------------------------------------------------------------------------------- */
+      /* 
+            2. position: absolute;
+            - position là nó sẽ chạy theo thèn cha có position là: relative or absolute
+            - khi sử dụng position: absolute; thì sẽ "không chiếm diện tích" nữa
+
+        */
+      .wrap {
+        width: 10rem;
+        height: 10rem;
+        background-color: black;
+
+        position: relative;
+      }
+      .boxed-absolute {
+        width: 3rem;
+        height: 3rem;
+        background-color: green;
+
+        /* relative thì element này vẫn đang chiếm diện tích */
+        /* position: relative; */
+        /* absolute thì element này không còn chiếm diện tích nữa, thẻ p sẽ tràn lên */
+        position: absolute;
+
+        /* cũng sài những thuộc tính top/bottom/left/right để điều chỉnh vị trí */
+        /* bottom: 10px;
+        right: 10px; */
+
+        /* canh trung tâm, chính giữa*/
+        top: 50%;
+        left: 50%;
+        /* nhưng vẫn chưa nằm giữa, mà trước đó chúng ta đã học transform: translate(); để chỉnh về tâm của element 
+            nhắc lại: -50% là giảm 50% width hiện có của element 
+                    translate(-50%, -50%): dịch về trái translateX(-50%) và dịch lên trên translateY(-50%)
+                -> lúc này tâm của element đã nằm đúng với vị trí trung tâm*/
+        transform: translate(-50%, -50%);
+
+        /* center theo chiều ngang */
+        left: 50%;
+        transform: translateX(-50%);
+        /* center theo chiều dọc */
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .wrap > p {
+        color: white;
+      }
+
+      .wrap-1 {
+        width: 10rem;
+        height: 10rem;
+        background-color: rgb(31, 10, 122);
+
+        /* 
+            parent phải có position thì con sài position:absolute; trong parent đc
+            nếu parent không có thì con sài position:absolute cho thèn body nhé
+        */
+        position: relative;
+      }
+      .boxed-absolute-1 {
+        width: 3rem;
+        height: 3rem;
+        background-color: rgb(115, 128, 0);
+
+        position: absolute;
+
+        /* ----------------------------------- */
+        /*     
+            Overlay all, 
+            Nếu muốn "boxed-absolute-1" phủ toàn bộ parent chứa nó 
+        */
+        /* start: cách 1: */
+        /* top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0; */
+        /* width/height đang set cứng nên ko thay đổi đc --> auto */
+        /* width: auto;
+        height: auto; */
+        /* end: cách 1: */
+
+        /* start: cách 2: */
+        /* về vị trí gốc */
+        /* top: 0;
+        left: 0; */
+        /* chiếm diện tích bằng kéo dài width/height */
+        /* width: 100%;
+        height: 100%; */
+        /* end: cách 2: */
+
+        /* 
+            Phủ theo chiều ngang
+        */
+        /* cách 1: tăng width */
+        /* top: 0;
+        left: 0;
+        width: 100%; */
+
+        /* cách 2: left/right:0, width auto chạy từ left->right */
+        /* top: 0;
+        left: 0;
+        right: 0;
+        width: auto; */
+
+        /* 
+            Phủ theo chiều dọc
+        */
+        /* cách 1 */
+        /* top: 0;
+        left: 0;
+        height: 100%; */
+
+        /* cách 2 */
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: auto;
+
+        /* ----------------------------------- */
+        /* 
+            thuộc tính z-index đi kèm vs position 
+            nếu không có position thì z-index không hoạt động đc
+
+            steps cho ví dụ:
+                1.Đặt thẻ p với position và z-index
+                1.set z-index cho "boxed-absolute-1"
+        */
+        z-index: 0;
+
+      }
+      .index-text{
+          position: relative;
+          z-index: 1;
+      }
+
+      /* -------------------------------------------------------------------------------- */
+      /* 
+        3. position: fixed; 
+            - cố định
+            - không chiếm diện tích
+            - phụ thuộc vào thẻ body, chứ ko phụ thuộc vào cha chứa relative hay absolute
+
+        Người ta khuyến cáo fixed không nên đi kèm với transform, có thể gây lỗi giao diện
+        Không sử dụng transform:translate() ở cha có con chứa fixed -> cha sẽ khiếm con ko fixed đc
+            
+      */
+      body{
+          height: 2000px;
+          /* do fixed chiếm height:10rem, nên dịch chuyển nội dung ra khỏi khu vực này */
+          padding-top: 10rem;
+      }
+      .header{
+          height: 10rem;
+          background-color: aquamarine;
+          /* sử dụng fixed trên top, overlay theo chiều ngang */
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+      }
+
+    </style>
+    <!-- 1. position: relative; -->
+    <div class="boxed"></div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, deleniti
+      quas quo repellat laboriosam suscipit maxime debitis fugiat quibusdam.
+      Quaerat magni consequatur beatae nesciunt impedit esse tempora minus est
+      ratione!
+    </p>
+
+    <!-- 2. position:absolute; -->
+
+    <div class="wrap">
+      <div class="boxed-absolute"></div>
+      <p>This is text</p>
+    </div>
+
+    <div class="wrap-1">
+      <div class="boxed-absolute-1"></div>
+      <p class="index-text">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      </p>
+    </div>
+
+    <!-- 2. position:fixed; -->
+    <div class="header"></div>
+    
+  </body>
+</html>
