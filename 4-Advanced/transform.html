@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transform Css</title>
+  </head>
+  <body>
+    <style>
+        html{
+            margin: 0;
+            padding: 0;
+        }
+        .boxed{
+            width: 3rem;
+            height: 3rem;
+            background-color: red;
+
+            /* Vấn đề:
+                Mong muốn hình đó to ra, nhưng không chiếm thêm diện tích
+              Giải pháp: 
+                - sử dụng transform: scale();
+                scale là tăng giảm tỷ lệ, dịch chuyển mà không ảnh hưởng đến xung quanh
+                Ví dụ: 
+                    Giá trị của scale() đang nói về tỷ lệ, nên để 2 hiểu là tăng gấp đôi
+                        transform: scale(2, 2);
+                    tương đương 
+                        transform: scaleX(2);
+                        transform: scaleY(2);
+
+                - Xoay hình rotate(xdeg)
+                      xdeg với x là số độ cần xoay
+                  xoay ngược kim đồng hồ
+                      transform: rotate(-25deg);
+                  ngoài ra còn có rotateX() rotateY() rotateZ()
+                      đây là những thuộc tính xoay quanh trục, tưởng tượng theo 3d
+                      X : trục hoành(trục ngang)
+                      Y : trục tung(trục đứng)
+                      Z : trục Z --> thuộc tính này có kết quả giống với rotate() nếu đều là 2D
+
+
+                - dịch chuyển translate()
+                    translate(x, y) <==> translateX() translateY()
+            */
+            transform: scale(2, 2);
+            /* rotate(), sẽ ghi đè thuộc tính scale(), nên sẽ mất scale() trước đó */
+            transform: rotate(25deg);
+            transform: translate(10px, 10px);
+            transform: translateX(50px) translateY(50px);
+            /* 100% ở đây là độ rộng/độ cao của tag đó, độ rộng width chứ ko phải độ rộng của block hay inline */
+            transform: translate(100%);
+            /* tương đương với lệnh trên */
+            transform: translateX(100%) translateY(100%);
+            /* có thể sài số âm để lùi, lúc này trung tâm của ảnh về ngay tọa độ (0,0) */
+            transform: translateX(-50%) translateY(-50%);
+
+            /* viết gộp lại */
+            transform: scale(2) rotate(45deg) translate(100%, 50%);
+
+            /* ngã hình --> hình bình hành 
+                  để đơn vị độ - deg */
+            /* 2 dòng dưới đây nhìn có vẻ giống nhau, nhưng lại cho kết quả khác nhau */
+            transform: skewX(15deg) skewY(20deg);
+            transform: skew(15deg, 20deg);
+
+            /* ví dụ về rotateX rotateY rotateZ*/
+            transform: scale(2, 2);
+            transform: scale(2, 2) rotateY(45deg);
+            /* transform: scale(2, 2) rotateZ(10deg); */
+        }
+    </style>
+    <div class="boxed"></div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, deleniti
+      quas quo repellat laboriosam suscipit maxime debitis fugiat quibusdam.
+      Quaerat magni consequatur beatae nesciunt impedit esse tempora minus est
+      ratione!
+    </p>
+  </body>
+</html>
