@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient</title>
+  </head>
+  <body>
+    <style>
+        /* Nên kham khảo thêm trên trang: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Using_CSS_gradients */
+      /* gradient cho background */
+      .boxed {
+        width: 15rem;
+        height: 15rem;
+        /* linear-gradient: 
+                hướng quay
+                    -direction: to right, to left, to top, to bottom
+                        to right bottom, to left bottom, to right top, to left top
+                        mặt định ko có giá trị: to bottom
+                    -chỉ rõ góc sẽ hướng tới: 120deg(120 độ)       
+                color1 [percent(%)]
+                color2 [percent(%)]
+        
+              */
+        background-image: linear-gradient(to right bottom, orange, white);
+        /* để % ở color
+                (color1 30%, color2 30%): color1 chiếm trọn 30%, và color2 bắt đầu từ 30% đó
+                (color1 30%, color2 50%): color1 chiếm trọn 30%, color2 chiếm trọn từ 50% về sau, còn từ 30%->50% sẽ mix 2 color
+                (color1 30%, color2 20%): color1 chiếm trọn 30%, color2 chiếm trọn từ 20% đè lên color1 lun
+
+              */
+        background-image: linear-gradient(
+          to right bottom,
+          blue 30%,
+          orange 50%
+        );
+        background-image: linear-gradient(
+          to right bottom,
+          blue 30%,
+          orange 20%
+        );
+      }
+      /* gradient cho chữ */
+      p {
+        /* đặt màu sẽ set cho chữ */
+        background-image: linear-gradient(to right, green, red);
+        /* làm chữ trong suốt */
+        color: transparent;
+        /* set backgroud cho text và xóa màu cho nền */
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+
+      /* overlay gradient */
+      /* nền có 2 phần: ảnh nền và tấm phủ nền
+        1. set 2 nền đè lên nhau, tấm phủ nền nằm trên cùng nên set trước
+        background-image:
+            tấm phủ nền,
+            ảnh nền 
+        2. Làm mờ tấm phủ nền bằng mã màu rgba để làm trong tấm phủ màu này
+      */
+      .gradient-2-background {
+        width: 100vw;
+        height: 20rem;
+        background-image: linear-gradient(
+            to right,
+            rgba(63, 63, 238, 0.61),
+            rgba(255, 255, 255, 0.603)
+          ),
+          url(https://images.unsplash.com/photo-1630124270815-a7de99a65cb5?ixid=MnwxMjA3fDB8MHxwaG90by1vZi10aGUtZGF5fHx8fGVufDB8fHx8&ixlib=rb-1.2.1&dpr=1&auto=format%2Ccompress&fit=crop&w=1399&h=594);
+        background-size: cover;
+      }
+    </style>
+    <div class="boxed">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet a
+        ipsa, pariatur provident similique at, iste vero excepturi iusto eos
+        repellat esse necessitatibus magni odit accusantium nostrum? Amet,
+        totam.
+      </p>
+    </div>
+
+    <div class="gradient-2-background"></div>
+  </body>
+</html>
