@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priority in Css</title>
+</head>
+<body>
+    
+    <!-- 3. Thẻ style trực tiếp trong tag sẽ có ưu tiên hơn style trong file .css, hay từ thẻ <style> như trên/dưới
+        Nhưng vẫn kém hơn !important -->
+    <p class="title-class" id="title-id" style="color: brown;">
+        This is Title
+    </p>
+
+    <style>
+
+        /* 2. nếu sài tag#id thì sẽ có độ ưu tiên hơn #id
+                tương tự tag.class sẽ ưu tiên hơn .class */
+        p#title-id{
+            /* color ở ID sẽ ghi đè cho .title-class{} */
+            color: green;
+        }
+
+        /* 1. Priority: tags < class < ID < inline tag < !important */
+        #title-id{
+            /* color ở ID sẽ ghi đè cho .title-class{} */
+            color: red;
+        }
+        
+        .title-class{
+            /* color ở class sẽ ghi đè cho p{color: blue;} ở dưới */
+            color: blueviolet;
+        }
+        p{
+            font-size: 3rem;
+            font-weight: bold;
+            color: blue;
+            /* Nhưng nếu muốn lấy color trong thẻ p chứ ko phải color từ #id thì ta thêm thuộc tính !important */
+            /* color: violet !important; */
+            /* Nhưng hạn chế sài !important, trừ khi bất quá mới đc sử dụng */
+        }
+    </style>
+</body>
+</html>
