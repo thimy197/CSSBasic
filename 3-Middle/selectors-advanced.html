@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector Advanced</title>
+</head>
+<style>
+    /* 
+        Vấn đề:
+            KH muốn sửa thông tin của những thẻ a, nhưng mình lại không sử dụng những selectors: tag, id, class
+            Thì lúc này mình sẽ dựa vào attribute của thẻ để xác định nhé
+
+            Giải pháp: sử dụng [attribute^="giá trị bắt đầu"]
+                ^= attribute có value bắt đầu bằng ...
+                $= kết thúc bằng ...
+                *= có chứa
+                = chính xác
+    */
+    /* thẻ a có href bắt đầu bằng http:// */
+    a[href^="http:/"]{
+        color: red;
+    }
+    /* thẻ span có attribute là data-text="value" */
+    span[data-text="value"]{
+        font-size: 3rem;
+    }
+    /* thẻ span có attribute là data-text, không chỉ định value */
+    span[data-text]{
+        font-size: 5rem;
+    }
+    /* chỉnh chữ cái đầu tiên trong đoạn text */
+    p::first-letter{
+        color: red;
+        font-weight: 400;
+        font-size: 3rem;
+    }
+    /* chỉnh dòng đầu tiên trong đoạn text */
+    p::first-line{
+        background-color: rgb(236, 196, 120);
+    }
+</style>
+<body>
+    <a href="http://google.com">google.com</a>
+    <a href="http://abc.com">abc.com</a>
+    <a href="google.vn">google.vn</a>
+    <a href="http://vietnam.net">vietname.net</a>
+    <a href="http://ayz.com">ayz.com</a>
+    <span data-text="value">This is span tag</span>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto at maiores inventore odit reiciendis earum tenetur minima ut iste optio facere dignissimos illo eveniet, minus ipsam quia tempore officiis saepe!
+    </p>
+</body>
+</html>
