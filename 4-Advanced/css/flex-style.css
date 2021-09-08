@@ -1,0 +1,292 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #ccc;
+}
+
+/* CSS Flexbox */
+/*
+        Kham khảo link bên dưới để biết về flex model
+        https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_Layout/Flexbox
+*/
+/*
+        display: flex | inline-flex
+            quyết định bạn có sử dụng layout flexbox
+        flex-direction: row | column; //default là row-nằm ngang
+            cho phép thay đổi main-axis
+        flex-wrap: nowrap | wrap | wrap-reverse // default: nowrap
+            xuống dòng
+        flex-basis: <length>
+            kích thước của main-size
+        justify-content: flex-start | flex-end | center | space-between | space-around
+            căng ngang nếu main-axis theo chiều ngang(row), ko đảo trục
+            căng dọc nếu main-axis theo chiều dọc(column)
+                space-between làm chúng cách xa nhau, left vs right sát biên
+                space-around làm khoảng cách 2 bên trái/phải các item con bằng nhau, có 2 bên
+                space-evenly làm khoảng giữa các item con đều nhau, có 2 bên
+        justify-seft: flex-start | flex-end | center
+            sử dụng cho thèn con(flex item) <=tương đương với=> justify-content ở thèn cha(flex container)
+        align-content: flex-start | flex-end | center
+            giống justify-content nhưng theo phương hướng của cross-axis, ko đảo trục
+        align-self: flex-start | flex-end | center
+            sử dụng cho thèn con(flex item) <=tương đương với=> align-content ở thèn cha(flex container)
+        align-items: flex-start | flex-end | center
+            đảo trục cross-axis
+        flex-grow: <number>
+            thay đổi kích thước của thèn main-size
+            grow làm lớn lên
+        flex-shrink: <number>
+            ngược lại với flex-grow
+            shrink thu nhỏ lại
+        flex: <number>
+            viết tắt của: flex-basic flex-grow flex-shrink
+        order: <number>
+            quyết định thèn flex item nào xuất hiện trước
+            oder càng nhỏ thì nó đứng về main-axis-start
+        flex-flow
+            viết tắt của: flex-wrap flex-direction
+            vd: flex-flow: row wrap;
+*/
+/* Navbar */
+.nav{
+    min-height: 42px;
+    background-color: orange;
+    /* để 2 thẻ ul nằm ngang do display:flex, có default flex-direction: row; */
+    display: flex;
+    /* Đẩy xa 2 flex item ra xa nhau*/
+    justify-content: space-between;
+
+}
+.nav-list {
+    padding-left: 0;
+    margin: auto 1rem;
+}
+.nav-item{
+    /* làm mất style của list */
+    list-style: none;
+    color: white;
+    margin: 0 0.5rem;
+    /* vì các thẻ li này là thẻ block nên xuất hiện thành từng dòng
+        chuyển sang thành thẻ inline-block để chúng nằm trên 1 dòng */
+    display: inline-block;
+}
+
+/* form input */
+/* cách canh trung tâm thẻ form với thẻ .form-container
+.form-container{
+    height: 10rem;
+    position: relative;
+}
+.form{
+    width: 50%;
+    height: 80%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.form__row{
+    padding: 1.2rem 1rem;
+    display: flex;
+} */
+/* Cách margin-top */
+.form-container {
+    max-width: 720px;
+    padding: 32px;
+    margin: 36px auto;
+    background-color: #fff;
+}
+
+.form__row {
+    padding: 8px 0;
+    display: flex;
+}
+
+.form__label{
+    min-width: 90px;
+}
+.form__input{
+    /* cho nội ddung này chiếm phần dư còn lại của chiều ngang main-axis */
+    flex: 1;
+}
+
+/* column-layout */
+
+.column-layout{
+    background-color: white;
+    padding: 2rem 1rem;
+    display: flex;
+}
+/* .column-item{
+    flex: 1;
+} */
+
+.sidebar-one{
+    flex: 1;
+    /* order: 1; */
+}
+.main-column{
+    flex: 3;
+    /* order: 3; */
+}
+.sidebar-two{
+    flex: 1;
+    /* order: 2; */
+}
+
+/* feature-layout */
+.feature-layout{
+    margin: 35px auto;
+    display: flex;
+    /* cách đều nhau, làm các item có left/right bằng nhau */
+    justify-content: space-around;
+}
+/* thay đổi theo chiều dọc nếu chuyển sang chế độ mobile */
+@media (max-width: 740px) {
+    .feature-layout{
+        flex-direction: column;
+    }
+}
+.feature-item{
+    padding: 1rem 1rem;
+    /* set main-size cho item, chừa 10% cho space */
+    flex-basis: 30%;
+}
+.feature-item:first-child{
+    background-color: #acd4d4;
+}
+.feature-item:nth-child(2){
+    background-color: #a4e68a;
+}
+.feature-item:last-child{
+    background-color: #ecc9d0;
+}
+
+/* wrap-layout */
+.wrap-layout{
+    background-color: white;
+    min-height: 150px;
+    display: flex;
+    justify-content: space-around;
+    /* xuống dòng khi chạm nhau */
+    flex-wrap: wrap;
+    /* lên dòng khi chạm nhau, ngược lại vs wrap */
+    flex-wrap: wrap-reverse;
+}
+.wrap-layout__item{
+    background-color: orange;
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    line-height: 5rem;
+    font-size: 3rem;
+}
+
+/* center-layout */
+.center-layout{
+    margin: 100px 200px;
+    background-color: rgb(163, 248, 177);
+    height: 300px;
+    display: flex;
+
+    /* item nằm ngang, center main-axis */
+    justify-content: center;
+    /* item nằm ngang, center cross-axis */
+    align-items: center;
+}
+.center-layout__item{
+    font-size: 3rem;
+    /* cách 1: canh giữa cho item có cha là flexbox */
+    /* margin: auto; */
+    /*
+      Cách 2: là các bạn thêm 2 thuộc tính vào flex-container:
+        justify-content: center;
+        align-items: center;
+    */
+}
+
+/* chart-layout */
+.chart-layout{
+    height: 300px;
+    background-color: white;
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-around;
+    /* cách 1, chuyển tất cả items bắt đầu từ flex-end của cha */
+    /* align-items: flex-end; */
+}
+.chart-layout__item{
+    background-color: orangered;
+    width: 70px;
+    /* lấy giá trị của biến --percent từ style của item */
+    height: var(--percent);
+    text-align: center;
+    /* cách 2, chuyển từng item bắt đầu từ flex-end */
+    align-self: flex-end;
+
+    /* gọi hiệu ứng animation 
+        - hiệu ứng chạy từ from->to
+        - ease chuyển động từ từ
+            linear chuyển động đều
+    */
+    animation: animation-grouth ease-in 0.2s;
+}
+
+/* viết @keyframe để thực hiện animation */
+@keyframes animation-grouth {
+    from{
+        opacity: 0;
+        height: calc(var(--percent)-50%);
+    }
+    to{
+        opacity: 1;
+        height: var(--percent);
+    }
+}
+
+/* End */
+.the-end {
+    margin: 12px auto 48px auto;
+    padding: 32px 0;
+    max-width: 740px;
+    min-height: 360px;
+    display: flex;
+    /* đảo ngược main-start cho main-end */
+    /* flex-direction: row-reverse; */
+}
+
+.the-end__first {
+    padding: 4px 16px;
+    background-color: #fff;
+    flex: 1;
+}
+
+.the-end__second {
+    flex: 1;
+    /* Thêm này vào để flex:1 2 con, nhưng default direction là row */
+    display: flex;
+    /* chuyển lại direction, column-reverse: là đảo ngược thứ tự item */
+    flex-direction: column;
+}
+
+.the-end__second-one {
+    padding: 4px 16px;
+    background-color: rgb(227, 192, 214);
+    flex: 1;
+}
+
+.the-end__second-two {
+    padding: 4px 16px;
+    background-color: rgb(192, 210, 227);
+    flex: 1;
+}
