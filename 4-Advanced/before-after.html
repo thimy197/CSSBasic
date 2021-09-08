@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before After Pseudo</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+    <style>
+        /* 
+            Thêm vào trước(::before) hoặc sau(::after) của thẻ
+                "content" là bắt buộc phải có, để rỗng cũng đc
+                "content" có nội dung thì nội dung được chèn vào thẻ 
+                nội dung được thêm vào không thể bôi đen, ko thể chọn
+        */
+        
+        /* .title::before{
+            content: "The ";
+        }
+        .title::after{
+            content: " large";
+        }
+        .title{
+            color: aqua;
+        } */
+
+        /* 
+            attr() function trong pseudo 
+                dùng để lấy attribute
+            vd: lấy content trong "data-title" attribute hiển thị before 
+                lấy "href" attribute hiển thị after
+        */
+        .link-google::before{
+            content: attr(data-title);
+        }
+        .link-google::after{
+            content: " (" attr(href) ")";
+        }
+ /* --------------------------------------------------------- */
+        /* 
+            Tạo hình tròn nhỏ phía trước
+        */
+        .title{
+            position: relative;
+            padding-left: 2rem;
+
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .title::before{
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: red;
+            /* 
+                Để hiển thị được thông tin lên mà không có content ta sử dụng thuộc tính position 
+                Nhưng thèn cha của ::before là chính nó lun nha, nên phải set position: relative/absolute    
+            */
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            /* 
+                tới đây thì hình đã nằm đè lên vị trí đầu của main content
+                vậy làm sao cách main content vs before?
+                -> dùng padding để đẩy main content thôi, 
+                nếu sử dụng margin thì đẩy thèn cha ra lun nên thèn before nó đi theo vị trí của thèn cha
+            */
+        }
+ /* --------------------------------------------------------- */
+        /* 
+            Hiển thị line xuyên main content
+        */
+        .line-title{
+            position: relative;
+            text-align: center;
+        }
+        .line-title::after{
+            content: "";
+
+            width: 100%;
+            height: 1px;
+            background-color: violet;
+
+            position: absolute;
+            top: 50%;
+            left: 0;
+            /* giảm 50% height của line */
+            transform: translateY(-50%);
+
+        }
+
+        .line-title__text{
+            padding: 10px;
+            background-color: white;
+            /* để đè lên thèn cha nó ta sd position, nhưng absolute đang ưu tiên relative -> sd z-index để đưa con lên */
+            position: relative;
+            z-index: 2;
+
+            /* Do là thẻ block nên width chiếm toàn bộ nên chuyển sang thẻ inline-block */
+            display: inline-block; 
+        }
+
+        /* --------------------------------------------------------- */
+        /* Hiển thị icon có background mờ phía sau */
+        .icon{
+            /* hình vuông bọc ngoài user */
+            width: 2rem;
+            height: 2rem;
+            border-radius: 5px;
+            color: black;
+            position: relative;
+            margin: 0 auto;
+        }
+        .icon-user{
+            /* đưa ra trung tâm .icon */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        /* 
+        Khi thay đổi màu chữ thì màu background cũng bị mờ đi lun 
+            
+            Lúc này cách làm của chúng ta như sau:
+                - sử dụng ::before hoặc ::after bao phủ toàn bộ icon
+                - sử dụng background-color: currentColor; 
+                    // currentColor là lấy thuộc tính color của chính nó, ko có thì lấy của cha nó
+                - sử dụng opacity để làm mờ nền cho nhìn thấy icon nằm sau 
+            --> kết quả là thay đổi color user thì màu background cũng thay đổi theo
+        */
+        .icon::before{
+            content: "";
+            border-radius: inherit;
+            /* overlay all */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* get color của nó hoặc của cha nó */
+            background-color: currentColor;
+            /* làm mờ màu nên để thấy user phía sau */
+            opacity: 0.2;
+        }
+
+        /* --------------------------------------------------------- */
+        /* 
+            Hiệu ứng thay đổi từ trái sang phải hoặc từ trên xuống dưới khi hover chuột vào 
+                - chỉnh ::before overlap toàn bộ cha, nhưng muốn thay đổi theo hướng nào thì set heigh/width là 0
+                - z-index để cho ::before nằm sau chữ, khi thay đổi thì ko ảnh hưởng đến chữ
+                - set lại height/width khi :hover cho ::before
+                - tạo transition làm chậm sự thay đổi của height/width
+            
+            Tại sao lại làm được như vầy:
+                - khi height/width lúc đầu là 0 
+                - khi hover là 100%
+                Nghĩa là đang đang có sự tăng lên từ 0->100%
+                Lúc này ta tận dụng transition để làm chậm sự thay đổi khi tăng % đó
+                Và kết quả ta thấy nó thay đổi trái<->phải, trên<->dưới tùy theo set height/width
+        */
+        .effect{
+            text-decoration: none;
+            border: 1px solid black;
+            padding: 1rem 2rem;
+            margin: 10px 50px;
+            display: block;
+
+            /* làm chậm việc thay đổi color */
+            transition: color 0.25s linear;
+
+            position: relative;
+        }
+        .effect:hover{
+            color: tomato;
+        }
+        /* di chuyển left -> right */
+        .effect-lr::before{
+            content: ""; /* required */
+            /* overlay all parent */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: orange;
+            /* cho nằm phía sau chữ */
+            z-index: -1;
+
+            transition: width 0.25s linear;
+        }
+        .effect-lr:hover::before{
+            content: "";
+            width: 100%;
+        }
+        /* di chuyển right -> left */
+        .effect-rl::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background-color: blue;
+            z-index: -1;
+            transition: width 0.25s linear;
+        }
+        .effect-rl:hover::before{
+            content: "";
+            width: 100%;
+        }
+        /* di chuyển top -> bottom */
+        .effect-tb::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: blue;
+            z-index: -1;
+            transition: height 0.25s linear;
+        }
+        .effect-tb:hover::before{
+            content: "";
+            height: 100%;
+        }
+        /* di chuyển bottom->top */
+        .effect-bt::before{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: blue;
+            z-index: -1;
+            transition: height 0.25s linear;
+        }
+        .effect-bt:hover::before{
+            content: "";
+            height: 100%;
+        }
+        /* di chuyển từ xung quanh tới chính giữa */
+        .effect-ac::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            background-color: blue;
+            z-index: -1;
+            transition: all 0.25s linear;
+        }
+        .effect-ac:hover::before{
+            content: "";
+            height: 50%;
+            width: 50%;
+        }
+    </style>
+    <a href="http://google.com" class="link-google" data-title="Access: ">Google</a>
+    <h3 class="title">Title</h3>
+    <div class="line-title">
+        <p class="line-title__text">Title Line</p>
+    </div>
+
+    <div class="icon">
+        <i class="fas fa-user icon-user"></i>
+    </div>
+
+    <a href="" class="effect effect-lr">Effect left->right</a>
+    <a href="" class="effect effect-rl">Effect right->left</a>
+    <a href="" class="effect effect-tb">Effect top->bottom</a>
+    <a href="" class="effect effect-bt">Effect bottom->top</a>
+
+    <a href="" class="effect effect-ac">Effect arrow->center</a>
+</body>
+</html>
