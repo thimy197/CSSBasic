@@ -8,14 +8,23 @@
   </head>
   <body>
     <style>
+      /* 
+                Chú ý một số function: 
+                  var() để gọi biến
+                  calc() để thực hiện tính toán
+                  attr() sử dụng trong pseudo
+      */
       /* Hiện tại có 2 phần tử đang đổ bóng với color: #f97b7b
             Giải sử trang web của bạn có nhiều chỗ đang đỏ bóng, 
-            vậy thì việc sửa lại color sẽ thực hiện owrw nhiều chỗ
+            vậy thì việc sửa lại color sẽ thực hiện ở nhiều chỗ
         -> ngta sẽ sử dụng biến để lưu giá trị color */
         
         /* đặt trong root giống như khai báo biến toàn cục, tất cả mọi nơi có thể sử dụng biến này */
       :root {
-        /* Khai báo biến */
+        /* 
+            Khai báo biến: 
+              cú pháp: --name-variable 
+        */
         --shadow-color: #f97b7b;
         /* Để sử dụng biến ta làm như sau:
                 var(--tên-biến) */

@@ -15,17 +15,71 @@
         width: 100%;
         height: 100px;
 
+        /*  background-position property
+          - center: trung tâm
+          - có thể kết hợp giữa các: top, left, bottom, right
+          - có 1 giá trị: thì hiểu là cách left bao nhiêu, còn lại top/bottom là center
+              background-position: 10px; // hình ở trung tâm cách trái 10px
+          - background-position: top 20px right 30px; // nằm trên bên phải, cách trên 20px, cách phải 30px
+          - có 2 giá trị: thì hiểu là (x, y)
+              background-position: 10px 20px; //cách trái 10px, cách trên 20px
+        */
         background-position: center;
-        /* background phủ toàn bộ nền, scale hình */
+
+        /* background phủ toàn bộ nền, scale hình
+            cover: scale theo phần dài hơn(width or height) của hình làm chuẩn, chấp nhận bị che bớt hình
+            contain: lấy toàn bộ ảnh, không chấp nhận hình bị che 
+        */
         background-size: cover;
         background-repeat: no-repeat;
         /* fixed background */
         background-attachment: fixed;
 
-        /* viết tắt */
+        /* viết tắt: url repeat position position /size attachment */
         /* background: red
           url(https://images.unsplash.com/photo-1585435465945-bef5a93f8849?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80)
-          no-repeat center center/cover fixed; */
+          no-repeat center center/cover fixed; */ 
+      }
+
+      /* background-clip property */
+      .boxed{
+        width: 100px;
+        height: 50px;
+        margin: 50px auto;
+        font-weight: bold;
+        font-size: 35px;
+
+        /* border */
+        border: 5px dashed black;
+
+        padding: 5px 10px;
+
+        /* Lúc này ngta yêu cầu chỉ set background của phần content thôi, ko có border */
+        /* 
+          content-box : set background cho content thôi 
+          border-box : từ border -> padding -> content
+          padding-box : từ padding -> content
+        */
+        /* background-color: rgb(255, 0, 0);
+        background-clip: content-box; */
+
+        /* Nếu set back-ground img cho chữ thôi thì */
+        /* color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text; */
+        background-image: url(https://images.unsplash.com/photo-1529650639247-7e3340a77f79?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGNvbG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60);
+        
+        /* background-origin property 
+          
+        Cũng sẽ có các thuộc tính:
+            content-box : set background cho content thôi 
+            border-box : từ border -> padding -> content
+            padding-box : từ padding -> content
+          -Nó khác với background-clip ở chỗ là nó set "start" từ vị trí nào cho "image", chứ ko phải là nằm trong phần nào như background-lip
+          -Nó chỉ đi kèm với background-image, ko áp dụng ở background-color
+        */
+        /* background-origin: content-box;
+        background-repeat: no-repeat; */
       }
 
       /* border property */
@@ -34,7 +88,9 @@
         width: 100px;
         height: 100px;
 
-        /* border: border-width border-style border-color */
+        /* 
+          border: border-width border-style border-color 
+        */
         border: 10px solid black;
         /* bo 4 góc */
         border-radius: 20px;
@@ -52,5 +108,6 @@
       }
     </style>
     <div class="background"></div>
+    <div class="boxed">TEXT</div>
   </body>
 </html>

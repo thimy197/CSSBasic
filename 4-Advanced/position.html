@@ -12,8 +12,10 @@
         /* 
             1. position: relative; 
 
-            thuộc tính position sẽ hơi giống với transform, di chuyển vật thể mà không ảnh hưởng đến elements khác
-            nhưng transform có thể scale() được còn position thì không
+            relative: 
+            -vị trí tương đối, phụ thuộc vào chính nó thôi,
+            -thuộc tính position sẽ hơi giống với transform, di chuyển vật thể mà không ảnh hưởng đến elements khác
+            nhưng transform có thể scale()-(tăng giảm size) được còn position thì không
         
         */
         width: 3rem;
@@ -34,6 +36,7 @@
       /* 
             2. position: absolute;
             - position là nó sẽ chạy theo thèn cha có position là: relative or absolute
+              hay ns cách khác là nó lấy thèn cha có position gần nhất làm gốc tọa độ
             - khi sử dụng position: absolute; thì sẽ "không chiếm diện tích" nữa
 
         */

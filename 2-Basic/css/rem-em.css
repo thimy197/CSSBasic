@@ -10,8 +10,9 @@ html{
     height: 25vh;
     background-color: blue;
     font-size: 32px;
-    /* em phụ thuộc vào font-size của thẻ html, 
-    default font-size của html là 100% */
+    /* rem phụ thuộc vào font-size của thẻ html, 
+    default font-size của html là 100% = 16px */
+    /* lúc này tăng font-size của .rem sẽ không bị ảnh hưởng gì */
 }
 
 .em{
@@ -19,12 +20,14 @@ html{
     height: 25vh;
     background-color: aqua;
     font-size: 32px;
-    /* rem phụ thuộc vào font-size của chính thẻ đó hoặc 
-    elements chứa nó */
+    /* em phụ thuộc vào font-size của chính thẻ đó hoặc 
+    elements cha gần nhất chứa nó */
+    /* lúc này tăng font-size của .em sẽ bị ảnh hưởng */
 }
 
 /* trong thực tế thì ngta thưởng sử dụng phần tử rem
-vì chỉ cần thay đổi font-size của thẻ html để thay đổi kích thước cần thiết */
+vì chỉ cần thay đổi font-size của thẻ html để thay đổi kích thước cần thiết
+nếu sử em thì phải xét nhiều chỗ -> khó kiểm soát */
 
 /* 
 vd:quy đổi về 1 rem = 10px

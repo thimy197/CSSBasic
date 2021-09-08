@@ -42,5 +42,28 @@
             /* Nhưng hạn chế sài !important, trừ khi bất quá mới đc sử dụng */
         }
     </style>
+
+    <!-- Nguồn f8
+        1. Internal, External:
+            Internal (thẻ <style> trong file .html)
+            External (link css đính kèm bằng thẻ <link>)
+            -Tùy theo thức tự cái nào xuất hiện trước thì sẽ bị thèn sau ghi đè
+            -Bổ trợ lẫn nhau và theo cơ chế property xuất hiện sau thì ghi đè property trước đó(nếu có)
+        2. Priority: 
+            2. Inline -1000
+            3. Id - 100
+            4. class -10
+            5. tag - 1
+        Thứ tự ưu tiên: tags < class < ID < inline tag < !important 
+        
+        Nếu gọi nhiều loại cùng lúc thì làm như thế nào? 
+            vd: lấy thẻ h3 vừa có #id và .title:
+             -> h3#id.title{}
+             thẻ này sẽ ưu tiên hơn thẻ:
+                h3#id{} và h3.title{}
+             và cuối cùng là 
+                h3 < .title < .id
+        *Theo như f8 youtube thì sẽ thực hiện theo kiểu cộng điểm -> nhưng thấy cũng không khó hiểu phải đi cộng điểm
+    --> 
 </body>
 </html>
