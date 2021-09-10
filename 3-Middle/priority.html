@@ -65,5 +65,55 @@
                 h3 < .title < .id
         *Theo như f8 youtube thì sẽ thực hiện theo kiểu cộng điểm -> nhưng thấy cũng không khó hiểu phải đi cộng điểm
     --> 
+
+    <!-- Cách tính điểm trên trang f8 không được chuẩn, cách sau đây là chuẩn nhất
+        Ta có 4 vị trí ưu tiên từ trái sang, trái quan trọng nhất, giảm dần tới phải
+                            0 0 0 0
+            vd: 1 0 0 0 ưu tiên hơn 0 1 0 0
+        
+        vị trí 1: ngoài cùng bên phải
+            Element selector, nếu có nhiều element thì điểm sẽ đc tăng lên
+            vd: 
+                    p {}                    /* 0 0 0 1 */
+                    span {}                 /* 0 0 0 1 */
+                    p span {}               /* 0 0 0 2 */
+                    p > span {}             /* 0 0 0 2 */
+                    div p > span {}         /* 0 0 0 3 */
+        vị trí 2:
+            -class selectors
+            -pseudo-class selectors
+            -attribute selectors
+            vd: 
+                    .name {}                 /* 0 0 1 0 */
+                    .users .name {}          /* 0 0 2 0 */
+                    [href$='.pdf'] {}        /* 0 0 1 0 */
+                    :hover {}                /* 0 0 1 0 */
+            có thể kết hợp với vị trí 1
+                    div .name {}             /* 0 0 1 1 */
+                    a[href$='.pdf'] {}       /* 0 0 1 1 */
+                    .pictures img:hover {}   /* 0 0 2 1 */
+            có thể lặp lại cùng 1 selector để tăng độ ưu tiên
+                    .name {}              /* 0 0 1 0 */
+                    .name.name {}         /* 0 0 2 0 */
+                    .name.name.name {}    /* 0 0 3 0 */
+        vị trí 3:
+            #id selector
+            vd:
+                    #name {}                    /* 0 1 0 0 */
+                    .user #name {}              /* 0 1 1 0 */
+                    #name span {}               /* 0 1 0 1 */
+        vị trí 4:
+            inline styles
+            vd: 
+                    <p style="color: red">Test</p> /* 1 0 0 0 */
+        vị trí cấp cao:
+            !important được ưu tiên hơn những selector khác, nếu có nhiều !important thì sẽ phân loại ưu tiên theo vị trí như mô tả trên
+            vd:
+                    p {
+                        font-size: 20px!important;
+                    }
+
+        -> nhưng mục đích chúng nhắm đến là: "kiểu khai báo nào cụ thể hơn sẽ ưu tiên hơn, nếu 2 quy tắc trùng nhau thì cái cuối cùng sẽ thắng"
+    -->
 </body>
 </html>

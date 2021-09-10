@@ -55,6 +55,17 @@ body {
         flex-flow
             viết tắt của: flex-wrap flex-direction
             vd: flex-flow: row wrap;
+
+        **Nguồn handlebook css
+            - flex-direction: sắp xếp các mục theo row/column
+                By default, các mục bắt đầu từ left nếu là row,
+                            bắt đầu từ top nếu là column
+            - justify-content: căn chỉnh ngang
+            - align-items: căn chỉnh dọc
+
+            - flex-wrap: có xuống hàng hay không khi thu nhỏ screen
+                default là wrap - giữ trên 1 hàng
+
 */
 /* Navbar */
 .nav{
