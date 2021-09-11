@@ -1,0 +1,58 @@
+.card{
+    height: 100vh;
+    /* center elements */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+.btn{
+    /* min-width to catch over text */
+    min-width: 6rem;
+
+    /* sử dụng em để chỉ cần chỉnh font-size cho các btn--size thôi
+     thì padding&line-height sẽ thay đổi theo */
+    font-size: 14px;
+    line-height: 2em;
+    padding: 0 1.5em;
+
+    text-align: center;
+    border-radius: 1rem;
+    color: white;
+    text-transform: uppercase;
+    opacity: 0.9;
+    /* display point when hover */
+    cursor: pointer;
+    /* effect hover button */
+    transition: opacity .2s linear;
+}
+.btn:not(:first-child, :last-child){
+    margin: 0 4rem;
+}
+
+.btn--susscess{
+    background-color: #67b72e;
+}
+.btn--warning{
+    background-color: #ffae07;
+}
+.btn--error{
+    background-color: #d2482e;
+}
+
+.btn:hover{
+    opacity: 0.75;
+}
+
+.btn--disable{
+    /* important để không còn nhận opacity trong :hover lun */
+    opacity: 0.5 !important;
+    cursor: default;
+}
+
+.btn--size-small{
+    font-size: 12px;
+}
+.btn--size-large{
+    font-size: 16px;
+}
