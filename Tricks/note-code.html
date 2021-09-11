@@ -11,5 +11,20 @@
             chỉ những btn cạnh ngay phía sau nó mới bị ảnh hưởng,
             kết quả là button 2 và button 3 đc margin-left
         Hiệu ứng :hover button
-            Khi hover thì thực hiện giảm opacity, không nên đổi màu khác
+            Khi hover thì thực hiện giảm opacity, không nên đổi màu khác hoặc là sử dụng background khác
+    
+    BEM:
+        Step chia layout
+        1. sử dụng 1 div chung cho toàn khối, lấy tên block đặt cho class tại đây
+        2. chia thành từng khối riêng biệt "con" với mỗi div khác nhau
+            , mỗi div con này là từng phần block__element
+        3. từng khối con thêm các thành phần cần thiết: block__element--primary, block__element--red,...
+            , ở đây cũng là block__element
+        Notes: + Modifier là thuộc tính thêm cho block, nên là thuộc tính đi kèm với
+                1 block name chính
+    
+    Flex: align-content vs align-items:
+        align-content: khoảng cách giữa các dòng(nhiều row) theo chiều dọc
+                align-content không có hiệu lực nếu có 1 row
+        align-items: Xem tất cả items chứa trong 1 cái hộp và di chuyển các hộp theo chiều dọc
  -->

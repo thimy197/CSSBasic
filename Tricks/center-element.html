@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to center anythings</title>
+  </head>
+  <body>
+    <!-- Center Horizontally -->
+    <!-- 
+        1. Center TEXT with text-align
+        - only with "block" element
+     -->
+    <style>
+      p {
+        text-align: center;
+      }
+    </style>
+    <div class="center-horizontal-text">
+      <p>Hello, (centered) World!</p>
+    </div>
+
+    <!-- 
+        2. Center a DIV with Margin-Auto 
+    -->
+    <style>
+      .center-horizontal--margin .child {
+        width: 5rem;
+        height: 5rem;
+        background-color: red;
+        /* center div */
+        margin: 0 auto;
+      }
+    </style>
+    <div class="center-horizontal--margin">
+      <div class="child"></div>
+    </div>
+
+    <!-- 
+        3. Center a DIV with Flexbox
+     -->
+    <style>
+      .center-horizontal--flex {
+        /* center div */
+        display: flex;
+        justify-content: center;
+      }
+      .center-horizontal--flex .child {
+        width: 5rem;
+        height: 5rem;
+        background-color: orange;
+      }
+    </style>
+    <div class="center-horizontal--flex">
+      <div class="child"></div>
+    </div>
+    <!-- 
+    ================================================
+ -->
+    <!-- Center Vertically -->
+    <!-- 
+        1. With Absolute-position and Margin
+    -->
+    <style>
+      .center-vertical {
+        height: 200px;
+        background-color: wheat;
+        position: relative;
+      }
+
+      .center-vertical .child {
+        width: 5rem;
+        height: 5rem;
+        background-color: pink;
+        /* Center vertically */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    </style>
+    <div class="center-vertical">
+      <div class="child"></div>
+    </div>
+
+    <!-- 
+        2. With Flexbox
+    -->
+    <style>
+      .center-vertical--flex {
+        height: 200px;
+        background-color: rgb(177, 153, 109);
+        /* center div */
+        display: flex;
+        align-items: center;
+      }
+      .center-vertical--flex .child {
+        width: 5rem;
+        height: 5rem;
+        background-color: rgb(43, 255, 0);
+      }
+    </style>
+    <div class="center-vertical--flex">
+      <div class="child"></div>
+    </div>
+    <!-- 
+    ================================================
+ -->
+    <!-- Center Both Vertically and Horizontally -->
+    <!-- 
+        1. with Transform and Translate
+    -->
+    <style>
+      .center-position {
+        height: 200px;
+        background-color: rgb(141, 136, 128);
+        /* center 1 */
+        position: relative;
+      }
+
+      .center-position .child {
+        width: 5rem;
+        height: 5rem;
+        background-color: rgb(0, 238, 255);
+        /* center 2*/
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <div class="center-position">
+      <div class="child"></div>
+    </div>
+    <!-- 
+        2. with Flexbox
+    -->
+    <style>
+      .center--flex {
+        height: 200px;
+        background-color: rgb(219, 217, 211);
+        /* center */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .center--flex .child {
+        width: 5rem;
+        height: 5rem;
+        background-color: rgb(0, 4, 255);
+      }
+    </style>
+    <div class="center--flex">
+      <div class="child"></div>
+    </div>
+  </body>
+</html>
