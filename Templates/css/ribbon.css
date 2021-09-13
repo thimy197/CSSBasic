@@ -1,0 +1,138 @@
+html{
+    font-size: 62.5%;
+    font-family: "Poppins", sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --color: #7b78f8;
+    --shadow: rgba(123, 120, 248, 0.5) 0px 10px 20px 0px;
+    --line: #ccc;
+}
+
+.box{
+    /* chỉ lấy border */
+    width: 0;
+    height: 0;
+    margin: 50px;
+    /* 
+        Do border rộng tạo ra hình vuông
+        Nên chỉ cần lấy 1 phía thì được hình tam giác
+    */
+    border-top: 50px solid var(--color);
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+}
+
+.ribbon-simple{
+    width: 200px;
+    height: 100px;
+    background-color: var(--color);
+    position: relative;
+    border-radius: 5px;
+}
+
+.ribbon-simple::before{
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    border-bottom: 10px solid var(--color);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+/* 
+    Thực chất phía trên là tạo ra hình vuông và chỉ lấy border-bottom để lộ ra hình tam giác
+    Phát sinh vấn đề nếu sử dụng box-shadow -> box-shadow để lộ nguyên hình vuông của nó như dưới đây
+*/
+.ribbon-simple-boxshadow{
+    width: 200px;
+    height: 100px;
+    background-color: var(--color);
+    position: relative;
+    border-radius: 5px;
+    margin-top: 50px;
+    box-shadow: 1px 1px 5px 0 #807b7b;
+}
+
+.ribbon-simple-boxshadow::before{
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    border-bottom: 10px solid var(--color);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    box-shadow: 1px 1px 5px 0 #807b7b;
+}
+
+/* Giải pháp đưa ra ở đây chính là xoay hình 45deg */
+.ribbon-shadow{
+    width: 200px;
+    height: 100px;
+    background-color: var(--color);
+    position: relative;
+    border-radius: 5px;
+    margin-top: 50px;
+    box-shadow: 1px 1px 5px 0 #807b7b;
+}
+
+.ribbon-shadow::before{
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    /* tạo hình vuông */
+    width: 15px;
+    height: 15px;
+    /* xoay 45 độ */
+    transform: rotate(45deg);
+    background-color: var(--color);
+    box-shadow: 1px 1px 5px 0 #807b7b;
+    z-index: -1;
+}
+
+/* Xử lý viền nếu background là transparent */
+/* Giải pháp đưa ra ở đây chính là xoay hình 45deg */
+.ribbon-border{
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    border: 1.5px solid var(--color);
+    position: relative;
+    border-radius: 5px;
+    margin-top: 50px;
+    box-shadow: 1px 1px 5px 0 #807b7b;
+}
+
+.ribbon-border::before,
+.ribbon-border::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    /* tạo hình vuông */
+    width: 15px;
+    height: 15px;
+    /* xoay 45 độ */
+    transform: rotate(45deg);
+    background-color: transparent;
+    border: 1.5px solid var(--color);
+    box-shadow: 1px 1px 5px 0 #807b7b;
+    z-index: -1;
+    border-radius: 2px;
+}
+
+.ribbon-border::after {
+    content: "";
+    top: -9px;
+    border-color: white;
+    background-color: white;
+    z-index: 1;
+    box-shadow:none;
+}
