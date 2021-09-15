@@ -1,0 +1,166 @@
+/* setting chuẩn */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* bắt đầu từ trung tâm của body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #607d8b;
+}
+.container {
+  position: relative;
+  /* top: 50px; */
+}
+/* cup: bottom-left-radius, bottom-right-radius; gradient */
+.cup {
+  position: absolute;
+  width: 280px;
+  height: 300px;
+  background: linear-gradient(to right, #f9f9f9, #d9d9d9);
+  border-bottom-left-radius: 45%;
+  border-bottom-right-radius: 45%;
+}
+/* vành tròn trên top in cup: gradient, radius, top  */
+.top {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to right, #f9f9f9, #d9d9d9);
+  border-radius: 50%;
+}
+/* circle bên trong:  */
+.circle {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  /* width = 100% - left(10px) - right(10px) */
+  width: calc(100% - 20px);
+  /* height = heightVành(60px) - top(5px) - bottom(5px) */
+  height: 50px;
+  /* to left: để có đổ bóng phía trong */
+  background: linear-gradient(to left, #f9f9f9, #d9d9d9);
+  border-radius: 50%;
+  /* ẩn nội dung bị tràn, để circle nằm bên trong vành */
+  overflow: hidden;
+}
+/* trà bên trong circle */
+.tea {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#c57e65, #e28462);
+  border-radius: 50%;
+}
+/* tay cầm tách trà */
+.handle {
+  position: absolute;
+  right: -70px;
+  top: 40px;
+  width: 160px;
+  height: 180px;
+  /* Chỉ lấy 2 cạnh liền kề bên phải, 2 canh còn lại làm ẩn đi bằng transparent */
+  border: 25px solid #dcdcdc;
+  border-left: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+
+  border-radius: 50%;
+  /* xoay 45deg để trông giống tay cầm */
+  transform: rotate(42deg);
+}
+/* Đĩa */
+.plate {
+  width: 500px;
+  height: 200px;
+  /* set vị trí bắt đầu tính từ trung tâm đĩa */
+  transform: translate(-50%, -50%);
+
+  position: absolute;
+  /* cách top bằng chiều cao cốc, height - 30px(height/2 của vành tròn) */
+  top: 270px;
+  /* cách bên trái bằng trung tâm width cốc, nên lấy width cốc /2 */
+  left: 140px;
+  background: linear-gradient(to right, #f9f9f9, #e7e7e7);
+  border-radius: 50%;
+  box-shadow: 0 35px 35px rgba(0, 0, 0, 0.2);
+}
+.plate::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+  background: linear-gradient(to left, #f9f9f9, #e7e7e7);
+}
+.plate::after {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  background: radial-gradient(rgba(0, 0, 0, 0.2) 25%, transparent, transparent);
+  border-radius: 50%;
+}
+
+/* Hiệu ứng bay hơi */
+.vapour {
+  position: relative;
+  /* có liên quan đến animation */
+  display: flex;
+  /* làm mờ cả trà trong miệng cốc */
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.vapour span {
+  min-width: 8px;
+  height: 120px;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+  bottom: 50px;
+  display: block;
+  margin: 0 2px 50px;
+  animation: animate 5s linear infinite;
+  /* gán giá trị bằng 0 để khi quay lại giá trị ban đầu sẽ ko bị giật
+    làm cho chúng biến mất lun, và bắt đầu khi vào animation
+  */
+  opacity: 0;
+  /* 
+    làm animation trông ảo hơn bằng cách làm mờ
+    Giá trị lớn hơn sẽ cho mờ hơn
+   */
+  filter: blur(8px);
+  /* tính toán biến i từ style cố định -> xác định time xuất hiện */
+  animation-delay: calc(var(--i) * -0.5s);
+}
+@keyframes animate {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    /* biến đổi theo Y và scale to ra */
+    transform: translateY(-150px) scale(5);
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-300px) scale(50);
+  }
+}
