@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f1f1f1;
+}
+
+/* Tạo nền phía sau */
+.loader{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* Tạo viền trắng xung quanh bên ngoài */
+    border: 4px solid #f1f1f1;
+    /* Tạo box-shadow đổ bóng bên ngoài và bên trong(inset) */
+    box-shadow: -10px -10px 15px rgba(255, 255, 255, 1)
+            , 10px 10px 10px rgba(0, 0, 0, 0.1)
+            , inset -10px -10px 15px rgba(255, 255, 255, 0.5)
+            , inset 10px 10px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Che 1 phần ở trung tâm */
+.loader::after{
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    /* Tạo vành trắng phía trong */
+    border: 4px solid #f1f1f1;
+    /* Chỉ cần tạo đổ bóng phía trong */
+    box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 0.5)
+            , inset 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Lên màu cho đĩa và tạo animation */
+.loader span{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Tạo dãy màu nền */
+    background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+    /* Làm nổi box-shadow của vành, trông màu quay nằm bên trong - 3D */
+    z-index: -1;
+    /* Tạo độ mờ cho nền */
+    filter: blur(20px);
+    /* Hiệu ứng xoay vòng */
+    animation: animate 0.5s linear infinite;
+}
+
+@keyframes animate {
+    0%{
+        transform: rotate(0deg);
+    }100%{
+        transform: rotate(360deg);
+    }
+}

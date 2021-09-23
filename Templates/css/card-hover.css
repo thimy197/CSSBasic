@@ -16,7 +16,7 @@ body::before{
     height: 100%;
     /* Lên màu */
     background: linear-gradient(#f00, #f0f);
-    /* 
+    /*******
         Thực hiện cắt hình, phần được cắt sẽ được hiển thị, phần còn lại sẽ bị hidden 
         circle(30% at right 70%) cắt hình tròn, có diện tích là 30%, at-tại vị trí (x,y)=(right, 70%);
     */
@@ -73,7 +73,7 @@ body::after{
     /* Bị ẩn nếu content vượt khỏi khung, mục đích ở đây để làm hiệu ứng cho nội dung */
     overflow: hidden;
 
-    /* backdrop-filter: Làm mờ/chuyển màu các phần tử phía sau phần tử hiện tại, chỉ vùng bị phần tử này đè lên */
+    /******* backdrop-filter: Làm mờ/chuyển màu các phần tử phía sau phần tử hiện tại, chỉ vùng bị phần tử này đè lên */
     backdrop-filter: blur(5px);
 }
 
