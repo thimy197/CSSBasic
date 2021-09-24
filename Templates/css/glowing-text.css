@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    background: #09242f;
+}
+/* Tự làm bằng input text */
+.glowing-text{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+input.light-input{
+    border: 0;
+    outline: 0;
+    /* Làm mất border của input */
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background: transparent;
+    text-transform: uppercase;
+    /* text-shadow sài nhiều màu sẽ cho độ lang ra rộng hơn */
+    /* text-shadow: 2px 1px 10px #03A9F4; */
+    text-shadow: 0 0 10px #03bcf4
+        , 0 0 20px #03bcf4
+        , 0 0 40px #03bcf4
+        , 0 0 80px #03bcf4
+        , 0 0 160px #03bcf4;
+    /* Đổ bóng xuống dưới - below */
+    -webkit-box-reflect: below 0 linear-gradient(transparent, #0008);
+}
+
+/* Kết quả sử dụng bằng thẻ h2 */
+.glowing-text-2{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.light-h{
+    position: relative;
+    font-size: 6rem;
+    letter-spacing: 15px;
+    color: #0e3742;
+    text-transform: uppercase;
+    width: 100%;
+    text-align: center;
+    line-height: 0.7em;
+    outline: none;
+    -webkit-box-reflect: below 1px linear-gradient(transparent, #0008);
+    animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+    0%, 18%, 20%, 50.1%, 60%, 80%, 90%, 95%{
+        color: #0e3742;
+        text-shadow: none;
+    }
+    18.1%, 20.1%, 50.2%, 60.1%, 80.1%, 90.1%, 100%{
+        color: #fff;
+        text-shadow: 0 0 10px #03bcf4
+        , 0 0 20px #03bcf4
+        , 0 0 40px #03bcf4
+        , 0 0 80px #03bcf4
+        , 0 0 160px #03bcf4;
+    }
+}
