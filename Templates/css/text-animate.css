@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #252839;
+}
+h1{
+    position: relative;
+    font-size: 14vw;
+    color: #252839;
+    text-transform: uppercase;
+    /* Tạo viền text */
+    -webkit-text-stroke: 0.3vw #383d52;
+}
+h1::before{
+    content: attr(data-creative);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #01fe87;
+    /* Tạo thanh bên phải, điểm chạy */
+    border-right: 2px solid #01fe87;
+    /* Tạo viền text */
+    -webkit-text-stroke: 0vh #383d52;
+    overflow: hidden;
+
+    /* tạo animation cho border bên phải chạy từ trái sang phải 
+        infinite: để chỉ hành động lặp mãi mãi */
+    animation: animate 6s linear infinite; 
+}
+
+@keyframes animate {
+    /* 0%, 10%, 100%{
+        width: 0;
+    }
+    70%, 90%{
+        width: 100%;
+    } */
+    /* Nếu để 100% và 0% cùng giá trị thì hành động quay lại ban đầu cũng đc thể hiện */
+    0%, 100%{
+        width: 0;
+    }
+    90%{
+        width: 100%;
+    }
+}
