@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+nav{
+    position: relative;
+    display: flex;
+}
+nav a{
+    position: relative;
+    margin: 0 20px;
+    font-size: 2em;
+    color: #000;
+    text-decoration: none;
+}
+nav .marker{
+    position: absolute;
+    /* init position */
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: #a39f9f;
+    bottom: -8px;
+    border-radius: 4px;
+    /* làm chậm sự thay đổi của hành động */
+    transition: 0.5s;
+}
+
+/* selected class */
+.link--selected::after{
+    content: '';
+    position: absolute;
+    /* có độ dài 100% bắt đầu từ left:0 */
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: #000;
+    bottom: -8px;
+    border-radius: 4px;
+}

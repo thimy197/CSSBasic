@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Sliding Menu</title>
+    <link rel="stylesheet" href="./css/nav-sliding.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="marker"></div>
+      <a href="#">Home</a>
+      <a href="#" class="link--selected">About</a>
+      <a href="#">Services</a>
+      <a href="#">Portfolio</a>
+      <a href="#">Team</a>
+      <a href="#">Contact</a>
+    </nav>
+    <script type="text/javascript">
+        // Find selector by class .marker
+        var marker = document.querySelector('.marker');
+
+        // function set position of marker
+        function indicator(e){
+            marker.style.left = e.offsetLeft + "px";
+            marker.style.width = e.offsetWidth + "px";
+        }
+
+        // Find all selector by 'nav a'
+        var items = document.querySelectorAll('nav a');
+
+        // loop each item to handle hover mouse
+        items.forEach(item => {
+            item.addEventListener("mouseover", (e)=>{
+                indicator(e.target);
+            });
+        });
+
+    </script>
+  </body>
+</html>
