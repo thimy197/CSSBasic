@@ -1,0 +1,139 @@
+:root{
+    --light-off: #444;
+    --background-color: #272727;
+    --light-on: #fff;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.bulb{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    background: var(--light-off);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.bulb::before{
+    content: "";
+    position: absolute;
+    top: -55px;
+    left: 25px;
+    height: 70%;
+    width: 50%;
+    background: var(--light-off);
+    border-top: 25px solid #000;
+    border-radius: 20%;
+}
+
+.bulb span:nth-child(1){
+    position: absolute;
+    top: -20px;
+    left: -4px;
+    height: 35px;
+    width: 35px;
+    display: block;
+    background: transparent;
+    border-bottom-right-radius: 40px;
+    box-shadow: 20px 20px 0 10px var(--light-off);
+    transform: rotate(335deg);
+}
+
+.bulb span:nth-child(2){
+    position: absolute;
+    top: -20px;
+    right: -4px;
+    height: 35px;
+    width: 35px;
+    display: block;
+    background: transparent;
+    border-bottom-right-radius: 40px;
+    box-shadow: 20px 20px 0 10px var(--light-off);
+    transform: rotate(115deg);
+}
+
+.wire{
+    position: absolute;
+    left: calc(50% - 2px);
+    bottom: 50%;
+    width: 4px;
+    height: 60vh;
+    background: #000;
+    z-index: 1;
+}
+
+.switch{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    height: 100px;
+    width: 100px;
+    background: #fff;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch .btn{
+    position: relative;
+    height: 70%;
+    width: 40%;
+    background: #c7c7c7;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #777;
+}
+
+.switch .btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 90%;
+    width: 100%;
+    background: linear-gradient(#666, #fff, #666);
+    border-radius: 5px;
+}
+
+/* ON status */
+.on .switch .btn::before{
+    top: 10%;
+}
+
+body.on{
+    /* tỏa tròn từ vị trí trung tâm */
+    background: radial-gradient(#555, #111);
+}
+
+body.on .bulb{
+    background: var(--light-on);
+    box-shadow: 0 0 50px var(--light-on),
+    0 0 100px var(--light-on),
+    0 0 150px var(--light-on),
+    0 0 200px var(--light-on),
+    0 0 250px var(--light-on),
+    0 0 300px var(--light-on),
+    0 0 350px var(--light-on);
+}
+
+body.on .bulb::before{
+    background: var(--light-on);
+}
+
+body.on .bulb span:nth-child(1),
+body.on .bulb span:nth-child(2){
+    box-shadow: 20px 20px 0 10px var(--light-on);
+}
